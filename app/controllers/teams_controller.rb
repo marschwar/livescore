@@ -1,5 +1,6 @@
 class TeamsController < ApplicationController
   before_action :set_team, only: [:show, :edit, :update, :destroy]
+  before_action :encode_image_in_params, only: [:create, :update]
 
   # GET /teams
   # GET /teams.json
@@ -25,7 +26,6 @@ class TeamsController < ApplicationController
   # POST /teams.json
   def create
     @team = Team.new(team_params)
-
     respond_to do |format|
       if @team.save
         format.html { redirect_to @team, notice: 'Team was successfully created.' }
@@ -70,5 +70,13 @@ class TeamsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def team_params
       params.require(:team).permit(:name, :encoded_image)
+    end
+
+    def encode_image_in_params
+      uploaded_io = params[:team].delete :encoded_image
+      if uploaded_io
+        img = Base64.encode64(uploaded_io.read)
+        params[:team][:encoded_image] = "data:#{uploaded_io.content_type};base64,#{img}"
+      end
     end
 end

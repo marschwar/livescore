@@ -11,11 +11,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140418122156) do
+ActiveRecord::Schema.define(version: 20140418131654) do
 
   create_table "teams", force: true do |t|
     t.string   "name"
-    t.string   "encoded_image"
+    t.text     "encoded_image"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
