@@ -11,7 +11,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140418131654) do
+ActiveRecord::Schema.define(version: 20140419072803) do
+
+  create_table "games", force: true do |t|
+    t.integer  "home_team_id",                         null: false
+    t.integer  "away_team_id",                         null: false
+    t.string   "location"
+    t.integer  "home_quarter_1", default: 0,           null: false
+    t.integer  "home_quarter_2", default: 0,           null: false
+    t.integer  "home_quarter_3", default: 0,           null: false
+    t.integer  "home_quarter_4", default: 0,           null: false
+    t.integer  "away_quarter_1", default: 0,           null: false
+    t.integer  "away_quarter_2", default: 0,           null: false
+    t.integer  "away_quarter_3", default: 0,           null: false
+    t.integer  "away_quarter_4", default: 0,           null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "period",         default: "unstarted", null: false
+  end
 
   create_table "teams", force: true do |t|
     t.string   "name"

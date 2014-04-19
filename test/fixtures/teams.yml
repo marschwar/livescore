@@ -1,9 +1,7 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  name: MyString
-  encoded_image: MyString
+team_a:
+  name: Team-A
 
-two:
-  name: MyString
-  encoded_image: MyString
+team_b:
+  name: Team-B

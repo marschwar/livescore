@@ -1,0 +1,21 @@
+.row
+  .col-xs-12= t("activerecord.values.game.period_#{game.period}")
+
+.row
+  .col-xs-5= team_image game.home_team
+  .col-xs-2= "vs."
+  .col-xs-5= team_image game.away_team
+.row
+  .col-xs-6= game.home_team.name
+  .col-xs-1= ""
+  - (1..4).each do |quarter|
+    .col-xs-1= game.home_score quarter
+  .col-xs-1
+    %strong= game.total_home
+.row
+  .col-xs-6= game.away_team.name
+  .col-xs-1= ""
+  - (1..4).each do |quarter|
+    .col-xs-1= game.away_score quarter
+  .col-xs-1.scoreboard__total
+    %strong= game.total_away

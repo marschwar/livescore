@@ -1,12 +1,12 @@
 = form_for @team, :html => { :class => 'form-horizontal', multipart: true } do |f|
-  .control-group
+  .form-group
     = f.label :name, :class => 'control-label'
     .controls
-      = f.text_field :name, :class => 'text_field'
-  .control-group
+      = f.text_field :name, :class => 'form-control'
+  .form-group
     = f.label :encoded_image, :class => 'control-label'
     .controls
-      = f.file_field :encoded_image, :class => 'text_field'
-  .form-actions
-    = f.submit nil, :class => 'btn btn-primary'
-    = link_to t('.cancel', :default => t("helpers.links.cancel")), teams_path, :class => 'btn'
+      = f.file_field :encoded_image
+      %p.help-block= t('.image.help')
+  = f.submit nil, :class => 'btn btn-primary'
+  = link_to t('.cancel', :default => t("helpers.links.cancel")), teams_path, :class => 'btn btn-default'

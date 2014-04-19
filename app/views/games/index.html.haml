@@ -1,0 +1,13 @@
+- model_class = Game
+.page-header
+  %h1=t '.title', :default => model_class.model_name.human.pluralize.titleize
+
+- @games.each_slice(2) do |row|
+  .row
+    - row.each do |game|
+      .col-md-6.scoreboard__game
+        =render partial: 'game', locals: { game: game }
+        .row
+          .col-md-12
+            = link_to t('.links.update'), edit_score_game_path(game), :class => 'btn btn-xs btn-default'
+

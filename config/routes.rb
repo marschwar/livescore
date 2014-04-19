@@ -1,5 +1,13 @@
 Rails.application.routes.draw do
+  root 'games#index'
+
   resources :teams
+  resources :games do
+    member do
+      get 'edit_score'
+      post 'update_score'
+    end
+  end
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

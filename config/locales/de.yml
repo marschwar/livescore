@@ -19,13 +19,18 @@
 # To learn more, please read the Rails Internationalization guide
 # available at http://guides.rubyonrails.org/i18n.html.
 
-en:
+de:
   activerecord:
-    values:
-      game:
-        period_unstarted: vor Kickoff
-        period_1: 1. Quarter
-        period_2: 2. Quarter
-        period_3: 3. Quarter
-        period_4: 4. Quarter
-        period_final: Final
+      models:
+        game: Spiel
+      attributes:
+        game:
+          period: Abschnitt
+      values:
+        game:
+          period_unstarted: vor Kickoff
+          period_1: 1. Quarter
+          period_2: 2. Quarter
+          period_3: 3. Quarter
+          period_4: 4. Quarter
+          period_final: Final

@@ -1,0 +1,31 @@
+= form_for @game, :html => { :class => 'form-inline', role: 'form' } do |f|
+  .row
+    .col-xs-4
+    - (1..4).each do |quarter|
+      .col-xs-2= quarter
+  .row
+    .col-xs-4= @game.home_team.name
+    - (1..4).each do |quarter|
+      .col-xs-2= f.text_field "home_quarter_#{quarter}", size: 5, class: 'form-control'
+  .row
+    .col-xs-4= @game.away_team.name
+    - (1..4).each do |quarter|
+      .col-xs-2= f.text_field "away_quarter_#{quarter}", size: 5, class: 'form-control'
+  .row
+    .col-xs-4= Game.human_attribute_name(:period)
+    .col-xs-8
+      %label.radio-inline
+        = f.radio_button :period, :unstarted
+        = t('activerecord.values.game.period_unstarted')
+      - (1..4).each do |quarter|
+        %label.radio-inline
+          = f.radio_button :period, quarter
+          = t("activerecord.values.game.period_#{quarter}")
+      %label.radio-inline
+        = f.radio_button :period, :final
+        = t('activerecord.values.game.period_final')
+
+
+  .form-actions
+    = f.submit nil, :class => 'btn btn-primary'
+    = link_to t('.cancel', :default => t("helpers.links.cancel")), games_path, :class => 'btn'

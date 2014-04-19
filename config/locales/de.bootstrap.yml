@@ -1,0 +1,15 @@
+de:
+  helpers:
+    actions: "Aktionen"
+    links:
+      back: "Zurück"
+      cancel: "Abbrechen"
+      confirm: "Bist du sicher?"
+      destroy: "Löschen"
+      new: "Neu"
+      edit: "Bearbeiten"
+    titles:
+      edit: "%{model} bearbeiten"
+      save: "%{model} speichern"
+      new: "Neues %{model}"
+      delete: "%{model} löschen"
