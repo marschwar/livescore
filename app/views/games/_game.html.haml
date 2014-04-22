@@ -1,10 +1,13 @@
 .row
-  .col-xs-12= t("activerecord.values.game.period_#{game.period}")
-
+  .col-xs-12.scoreboard__period= t("activerecord.values.game.period_#{game.period}")
 .row
-  .col-xs-5= team_image game.home_team
-  .col-xs-2= "vs."
-  .col-xs-5= team_image game.away_team
+  .col-xs-12.scoreboard__location= game.location
+.row.scoreboard__team_images
+  .col-xs-5.scoreboard__team-image.home= team_image game.home_team
+  .col-xs-2.scoreboard__vs= "vs."
+  .col-xs-5.scoreboard__team-image.away= team_image game.away_team
+.row.scoreboard__scores
+  .col-xs-12= "#{game.total_home} - #{game.total_away}"
 .row
   .col-xs-6= game.home_team.name
   .col-xs-1= ""

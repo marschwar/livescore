@@ -26,12 +26,12 @@
           %span.icon-bar
           %span.icon-bar
         %a.navbar-brand(href="/") Livescore
-        .navbar-collapse.collapse.navbar-responsive-collapse
-          %ul.nav.navbar-nav
-            %li= link_to "Link 1", "/path1"
-            %li= link_to "Link 2", "/path2"
-            %li= link_to "Link 3", "/path3"
-            %li= link_to "Link 3", "/path3"
+        / .navbar-collapse.collapse.navbar-responsive-collapse
+        /   %ul.nav.navbar-nav
+        /     %li= link_to "Link 1", "/path1"
+        /     %li= link_to "Link 2", "/path2"
+        /     %li= link_to "Link 3", "/path3"
+        /     %li= link_to "Link 3", "/path3"
 
     .container
       .row
@@ -40,11 +40,14 @@
           = yield
         .col-lg-3
           .well.sidebar-nav
-            %h3= t('.sidebar.title')
+            %h3
+              = t('.sidebar.title')
+              %br
+              %small= t('.sidebar.sub_title')
             %ul.nav.nav-list
               -# %li.nav-header= t('.sidebar.games')
-              %li= link_to t("helpers.links.game.new"), new_game_path
-              %li= link_to t("helpers.links.team.new"), new_team_path
+              %li= link_to t(".links.new_game"), new_game_path
+              %li= link_to t(".links.new_team"), new_team_path
 
       %footer
-        %p &copy; Company 2014
+        %p &copy; CodeKenner 2014

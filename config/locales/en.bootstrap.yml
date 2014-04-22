@@ -11,6 +11,10 @@ en:
       destroy: "Delete"
       new: "New"
       edit: "Edit"
+      game:
+        new: New Game
+      team:
+        new: New Team
     titles:
       edit: "Edit %{model}"
       save: "Save %{model}"

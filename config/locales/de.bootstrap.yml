@@ -8,6 +8,10 @@ de:
       destroy: "Löschen"
       new: "Neu"
       edit: "Bearbeiten"
+      game:
+        new: Neues Spiel
+      team:
+        new: Neues Team
     titles:
       edit: "%{model} bearbeiten"
       save: "%{model} speichern"

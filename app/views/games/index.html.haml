@@ -5,9 +5,11 @@
 - @games.each_slice(2) do |row|
   .row
     - row.each do |game|
-      .col-md-6.scoreboard__game
-        =render partial: 'game', locals: { game: game }
-        .row
-          .col-md-12
-            = link_to t('.links.update'), edit_score_game_path(game), :class => 'btn btn-xs btn-default'
+      .col-md-6
+        .scoreboard__game
+          =render partial: 'game', locals: { game: game }
+          .row.scoreboard__actions
+            .col-md-12
+              = link_to t('.links.update_score'), edit_score_game_path(game), :class => 'btn btn-xs btn-primary'
+              = link_to t('.links.update_game'), edit_game_path(game), :class => 'btn btn-xs btn-default'
 

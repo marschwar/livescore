@@ -1,0 +1,9 @@
+en:
+  layouts:
+    application:
+      sidebar:
+        title: Help us to get better
+        sub_title: Livescore only works if you participate
+      links:
+        new_team: Create a new new Team
+        new_game: Post a new Game

@@ -1,0 +1,5 @@
+en:
+  teams:
+    form:
+      image:
+        help: "Upload the team image. This can either be a png, gif or jpeg file. Make sure it is about 100x100px in size"
