@@ -43,3 +43,7 @@ gem 'haml-rails', group: :development
 # Use debugger
 gem 'debugger', group: [:development, :test]
 
+# see https://devcenter.heroku.com/articles/rails4
+gem 'rails_12factor', group: :production
+gem 'pg', group: :production
+
