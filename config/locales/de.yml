@@ -22,7 +22,9 @@
 de:
   activerecord:
       models:
-        game: Spiel
+        game:
+          one: Spiel
+          other: Spiele
       attributes:
         game:
           period: Abschnitt

@@ -1,0 +1,5 @@
+de:
+  teams:
+    form:
+      image:
+        help: "Lade das Teambild als png, gif oder jpeg hoch. Das Bild sollte am besten 100x100px und nicht größer als 50kB sein"

@@ -23,7 +23,7 @@ en:
   activerecord:
     values:
       game:
-        period_unstarted: vor Kickoff
+        period_unstarted: before Kickoff
         period_1: 1. Quarter
         period_2: 2. Quarter
         period_3: 3. Quarter
