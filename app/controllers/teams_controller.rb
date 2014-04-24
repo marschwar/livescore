@@ -1,4 +1,7 @@
 class TeamsController < ApplicationController
+
+  IMG_MAX_SIZE = 50000
+
   before_action :set_team, only: [:show, :edit, :update, :destroy]
   before_action :encode_image_in_params, only: [:create, :update]
 
@@ -74,7 +77,7 @@ class TeamsController < ApplicationController
 
     def encode_image_in_params
       uploaded_io = params[:team].delete :encoded_image
-      if uploaded_io
+      if uploaded_io && uploaded_io.size < IMG_MAX_SIZE
         img = Base64.encode64(uploaded_io.read)
         params[:team][:encoded_image] = "data:#{uploaded_io.content_type};base64,#{img}"
       end
