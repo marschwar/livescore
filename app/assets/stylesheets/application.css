@@ -13,3 +13,7 @@
  *= require_tree .
  *= require_self
  */
+
+.livescore__main {
+  margin-bottom: 2em;
+}

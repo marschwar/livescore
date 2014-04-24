@@ -1,5 +1,12 @@
 en:
-  index:
+  games:
     links:
       update_game: Update Game
       update_score: Update Score
+      all_games: All Games
+    index:
+    show:
+    edit_score:
+      title: Update Game Score
+    score_form:
+      period: Current Period

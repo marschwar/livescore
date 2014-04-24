@@ -18,6 +18,14 @@ class Game < ActiveRecord::Base
     score :away, quarter
   end
 
+  def started?
+    not unstarted?
+  end
+
+  def unstarted?
+    period.to_sym == :unstarted
+  end
+
 private
 
   def total(type)

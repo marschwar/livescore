@@ -24,6 +24,10 @@ class GamesController < ApplicationController
 
   # GET /games/1/edit_score
   def edit_score
+    @period_options = []
+    [:unstarted, 1, 2, 3, 4, :final].each do |key|
+      @period_options << [ t("activerecord.values.game.period_#{key}"), key ]
+    end
   end
 
   # POST /games

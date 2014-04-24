@@ -3,22 +3,39 @@
 .row
   .col-xs-12.scoreboard__location= game.location
 .row.scoreboard__team_images
-  .col-xs-5.scoreboard__team-image.home= team_image game.home_team
-  .col-xs-2.scoreboard__vs= "vs."
-  .col-xs-5.scoreboard__team-image.away= team_image game.away_team
-.row.scoreboard__scores
-  .col-xs-12= "#{game.total_home} - #{game.total_away}"
-.row
+  .col-xs-3.scoreboard__team-image.home= team_image game.home_team
+  - if game.started?
+    .col-xs-2.scoreboard__scores.home= "#{game.total_home}"
+    .col-xs-2.scoreboard__scores= "-"
+    .col-xs-2.scoreboard__scores.away= "#{game.total_away}"
+  - else
+    .col-xs-6.scoreboard__vs= "vs."
+  .col-xs-3.scoreboard__team-image.away= team_image game.away_team
+-# Web
+.row.hidden-xs
   .col-xs-6= game.home_team.name
   .col-xs-1= ""
   - (1..4).each do |quarter|
-    .col-xs-1= game.home_score quarter
-  .col-xs-1
+    .col-xs-1.scoreboard__period-score= game.home_score quarter
+  .col-xs-1.scoreboard__period-score
     %strong= game.total_home
-.row
+.row.hidden-xs
   .col-xs-6= game.away_team.name
   .col-xs-1= ""
   - (1..4).each do |quarter|
-    .col-xs-1= game.away_score quarter
-  .col-xs-1.scoreboard__total
+    .col-xs-1.scoreboard__period-score= game.away_score quarter
+  .col-xs-1.scoreboard__period-score.total
     %strong= game.total_away
+
+-# Mobile
+.scoreboard__mobile
+.row.visible-xs
+  .col-xs-2= game.home_team.abbreviated_name
+  - (1..4).each do |quarter|
+    .col-xs-2.scoreboard__period-score= game.home_score quarter
+  .col-xs-2.scoreboard__period-score.total= game.total_home
+.row.visible-xs
+  .col-xs-2= game.away_team.abbreviated_name
+  - (1..4).each do |quarter|
+    .col-xs-2.scoreboard__period-score= game.away_score quarter
+  .col-xs-2.scoreboard__period-score.total= game.total_away

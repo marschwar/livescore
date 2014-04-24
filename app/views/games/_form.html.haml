@@ -11,5 +11,6 @@
     = f.label :location, :class => 'control-label'
     .controls
       = f.text_field :location, :class => 'form-control'
-  = f.submit nil, :class => 'btn btn-primary'
-  = link_to t('.cancel', :default => t("helpers.links.cancel")), games_path, :class => 'btn btn-default'
+  .form-group.form-actions
+    = f.submit nil, :class => 'btn btn-primary'
+    = link_to t('.cancel', :default => t("helpers.links.cancel")), games_path, :class => 'btn btn-default'
