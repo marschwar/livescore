@@ -3,6 +3,7 @@ en:
     links:
       update_game: Update Game
       update_score: Update Score
+      destroy_game: Delete Game
       all_games: All Games
     index:
       title: Scoreboard

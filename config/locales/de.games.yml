@@ -3,6 +3,7 @@ de:
     links:
       update_game: Spiel bearbeiten
       update_score: Spielstand ändern
+      destroy_game: Spiel löschen
       all_games: Alle Spiele
     index:
       title: Scoreboard

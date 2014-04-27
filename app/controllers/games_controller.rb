@@ -1,5 +1,8 @@
 class GamesController < ApplicationController
-  before_action :set_game, only: [:show, :edit, :edit_score, :update, :update_score, :destroy]
+  before_action :set_and_authorize_game, only: [:edit, :edit_score, :update, :update_score, :destroy]
+  before_action :set_game, only: [:show]
+  before_action :load_teams, only: [:new, :edit]
+
   before_action :load_teams, only: [:new, :edit]
 
   # GET /games
@@ -37,6 +40,7 @@ class GamesController < ApplicationController
   # POST /games.json
   def create
     @game = Game.new(game_params)
+    @game.user = current_user
     respond_to do |format|
       if @game.save
         format.html { redirect_to @game, notice: 'Game was successfully created.' }
@@ -76,6 +80,11 @@ class GamesController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_game
       @game = Game.find(params[:id])
+    end
+
+    def set_and_authorize_game
+      set_game
+      authorize! action_name.to_sym, @game
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

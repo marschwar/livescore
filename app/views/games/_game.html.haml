@@ -16,21 +16,24 @@
         %span.time=game.game_time
   .col-xs-3.scoreboard__team-image.away= team_image game.away_team
 -# Web
-.scoreboard__desktop
-  - [:home, :away].each do |type|
-    .row.hidden-xs
-      .col-xs-8
-        = possession_marker game, type
-        = game.send("#{type}_team").name
-      - (1..4).each do |quarter|
-        .col-xs-1.scoreboard__period-score= game.score type, quarter
+- [:home, :away].each do |type|
+  .row.hidden-xs
+    .col-xs-8
+      = possession_marker game, type
+      = game.send("#{type}_team").name
+    - (1..4).each do |quarter|
+      .col-xs-1.scoreboard__period-score= game.score type, quarter
 
 -# Mobile
-.scoreboard__mobile
-  - [:home, :away].each do |type|
-    .row.visible-xs
-      .col-xs-4.scoreboard__team{class: type}
-        = possession_marker game, type
-        = game.send("#{type}_team").abbreviated_name
-      - (1..4).each do |quarter|
-        .col-xs-2.scoreboard__period-score= game.score type, quarter
+- [:home, :away].each do |type|
+  .row.visible-xs
+    .col-xs-4.scoreboard__team{class: type}
+      = possession_marker game, type
+      = game.send("#{type}_team").abbreviated_name
+    - (1..4).each do |quarter|
+      .col-xs-2.scoreboard__period-score= game.score type, quarter
+
+.row.scoreboard__author
+  .col-md-12
+    %span.glyphicon.glyphicon-user
+    %em= game.user.try :common_name
