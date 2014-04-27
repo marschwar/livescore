@@ -16,6 +16,8 @@ class GamesController < ApplicationController
   # GET /games/new
   def new
     @game = Game.new
+    @game.game_day = Date.today
+    @game.game_time = '15:00'
   end
 
   # GET /games/1/edit
@@ -83,7 +85,8 @@ class GamesController < ApplicationController
         :home_quarter_1, :home_quarter_2, :home_quarter_3, :home_quarter_4,
         :away_quarter_1, :away_quarter_2, :away_quarter_3, :away_quarter_4,
         :period,
-        :location
+        :location,
+        :game_day, :game_time
       )
     end
 

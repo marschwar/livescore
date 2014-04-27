@@ -8,6 +8,14 @@
     .controls
       = f.collection_select :away_team_id, @teams, :id, :name, {}, {class: 'form-control'}
   .form-group
+    = f.label :game_day, :class => 'control-label'
+    .controls
+      = f.date_field :game_day, :class => 'form-control', placeholder: "#{localize Date.today}"
+  .form-group
+    = f.label :game_time, :class => 'control-label'
+    .controls
+      = f.text_field :game_time, :class => 'form-control', placeholder: "15:00"
+  .form-group
     = f.label :location, :class => 'control-label'
     .controls
       = f.text_field :location, :class => 'form-control'

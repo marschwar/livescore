@@ -43,7 +43,17 @@
   }
 }
 
-.scoreboard__vs, .scoreboard__scores {
+.scoreboard__game-day {
+  padding-top: 0.25em;
+  text-align: center;
+  .date {
+    font-size: 1.5em;
+  }
+  .time {
+  }
+}
+
+.scoreboard__scores {
   text-align: center;
   font-size: 1.5em;
   line-height: 2em;

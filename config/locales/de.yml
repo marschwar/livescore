@@ -20,6 +20,12 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 de:
+  date:
+    formats:
+      default: '%d.%m.%Y'
+  time:
+    formats:
+      default: '%H:%M'
   activerecord:
     models:
       game:
