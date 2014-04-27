@@ -17,6 +17,7 @@
   text-transform: uppercase;
   font-size: 1.2em;
   line-height: 1.5em;
+
 }
 
 .scoreboard__location {
@@ -28,6 +29,10 @@
 .scoreboard__team_images {
   padding-top: .5em;
   padding-bottom: .5em;
+}
+
+.scoreboard__team {
+  padding-right: 0;
 }
 
 .scoreboard__team-image {
@@ -76,14 +81,14 @@
   }
 }
 
-.scoreboard__mobile {
-  .scoreboard__period-score {
-    padding: 0.5em;
-  }
-}
-
 form.scoreentry {
   .form-actions {
     padding-top: 1em;
+  }
+
+  .scoreentry__possession {
+    label {
+      font-weight: inherit;
+    }
   }
 }

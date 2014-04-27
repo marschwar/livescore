@@ -1,5 +1,7 @@
 class Game < ActiveRecord::Base
+
   PERIODS = %w(unstarted quarter_1 quarter_2 half quarter_3 quarter_4 final)
+
   belongs_to :home_team, class_name: 'Team'
   belongs_to :away_team, class_name: 'Team'
 
@@ -29,7 +31,9 @@ class Game < ActiveRecord::Base
     period.to_sym == :unstarted
   end
 
-private
+  def playing?
+    period.to_s.start_with? 'quarter'
+  end
 
   def total(type)
     (1..4).inject(0) do |sum, quarter|
@@ -40,5 +44,9 @@ private
   def score(type, quarter)
     raise unless (1..4).include? quarter
     self.send("#{type}_quarter_#{quarter}")
+  end
+
+  def possession?(type)
+    playing? && possession.try(:to_sym) == type.to_sym
   end
 end

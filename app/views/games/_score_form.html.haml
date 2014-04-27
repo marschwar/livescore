@@ -1,4 +1,23 @@
 = form_for @game, html: { class: 'form-horizontal scoreentry', role: 'form' } do |f|
+  .row
+    .col-xs-12
+      %label.control-label= t('.possession')
+  .row.scoreentry__possession
+    .controls
+      .col-xs-4
+        %label
+          = f.radio_button :possession, nil
+          = t('activerecord.game.possession.none')
+      .col-xs-4
+        %label
+          = f.radio_button :possession, :home
+          %span.hidden-xs= @game.home_team.name
+          %span.visible-xs-inline= @game.home_team.abbreviated_name
+      .col-xs-4
+        %label
+          = f.radio_button :possession, :away
+          %span.hidden-xs= @game.away_team.name
+          %span.visible-xs-inline= @game.away_team.abbreviated_name
   .row.scoreentry__team.home
     .col-xs-12
       %label.control-label= @game.home_team.name

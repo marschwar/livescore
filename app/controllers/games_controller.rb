@@ -84,7 +84,7 @@ class GamesController < ApplicationController
         :away_team_id,
         :home_quarter_1, :home_quarter_2, :home_quarter_3, :home_quarter_4,
         :away_quarter_1, :away_quarter_2, :away_quarter_3, :away_quarter_4,
-        :period,
+        :period, :possession,
         :location,
         :game_day, :game_time
       )
