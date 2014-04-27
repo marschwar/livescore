@@ -26,6 +26,8 @@ de:
   time:
     formats:
       default: '%H:%M'
+  navbar:
+    scoreboard: Scoreboard
   activerecord:
     models:
       game:
@@ -34,6 +36,7 @@ de:
     attributes:
       game:
         period: Abschnitt
+        possession: Ballbesitz
     values:
       game:
         period:

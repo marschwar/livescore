@@ -5,6 +5,7 @@ class GamesController < ApplicationController
   # GET /games
   # GET /games.json
   def index
+    @show_jumbo = true if request.path == '/'
     @games = Game.relevant.order(updated_at: :desc )
   end
 
