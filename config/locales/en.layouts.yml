@@ -4,6 +4,8 @@ en:
       sidebar:
         title: Help us to get better
         sub_title: Livescore only works if you participate
+        links:
+          login_with_facebook: Login with your Facebook account and keep the comunity up to date
       links:
         new_team: Create a new new Team
         new_game: Post a new Game

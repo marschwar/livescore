@@ -4,6 +4,8 @@ de:
       sidebar:
         title: Teile Informationen
         sub_title: Livescrore lebt von Deiner Mithilfe.
+        links:
+          login_with_facebook: Melde Dich mit Deinem Facebook Konto an und halte andere auf dem Laufenden
       links:
         new_team: Erstelle ein neues Team
         new_game: Teile einen aktuellen Spielstand

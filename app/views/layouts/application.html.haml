@@ -32,11 +32,17 @@
               %br
               %small= t('.sidebar.sub_title')
             %ul.nav.nav-list
-              -# %li.nav-header= t('.sidebar.games')
-              - if can? :create, Game
-                %li= link_to t(".links.new_game"), new_game_path
-              - if can? :create, Team
-                %li= link_to t(".links.new_team"), new_team_path
+              - if @current_user
+                -# %li.nav-header= t('.sidebar.games')
+                - if can? :create, Game
+                  %li= link_to t(".links.new_game"), new_game_path
+                - if can? :create, Team
+                  %li= link_to t(".links.new_team"), new_team_path
+            - unless @current_user
+              %a{href: '/auth/facebook'}
+                %p= t(".sidebar.links.login_with_facebook")
+                = image_tag asset_path('social/64/facebook.jpg'), title: 'Facebook'
+
 
       %footer
         %p &copy; CodeKenner 2014
