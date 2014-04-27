@@ -23,9 +23,11 @@ en:
   activerecord:
     values:
       game:
-        period_unstarted: before Kickoff
-        period_1: 1. Quarter
-        period_2: 2. Quarter
-        period_3: 3. Quarter
-        period_4: 4. Quarter
-        period_final: Final
+        period:
+          unstarted: before Kickoff
+          quarter_1: 1. Quarter
+          quarter_2: 2. Quarter
+          half: Halftime
+          quarter_3: 3. Quarter
+          quarter_4: 4. Quarter
+          final: Final
