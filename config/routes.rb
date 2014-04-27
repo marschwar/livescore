@@ -3,6 +3,7 @@ Rails.application.routes.draw do
 
   resources :teams
   resources :games do
+    resources :notes, only: [ :new, :create ]
     member do
       get 'edit_score'
       post 'update_score'

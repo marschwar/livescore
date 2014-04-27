@@ -15,6 +15,7 @@ class GamesController < ApplicationController
   # GET /games/1
   # GET /games/1.json
   def show
+    @notes = @game.notes.recent
   end
 
   # GET /games/new

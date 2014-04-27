@@ -3,7 +3,9 @@ de:
     links:
       update_game: Spiel bearbeiten
       update_score: Spielstand ändern
-      destroy_game: Spiel löschen
+      destroy: Spiel löschen
+      show: Spieldetails
+      create_note: Kurzmeldung hinzufügen
       all_games: Alle Spiele
     index:
       title: Scoreboard
@@ -12,6 +14,7 @@ de:
         description: Warst du auch schon mal im Stadion und wolltest wissen, wie es bei einem anderen Spiel in Deiner Liga gerade steht? Aktualisiere den Spielstand deines Spiels und erzähle anderen davon.
         usage: Diese Seite ist für jeden kostenlos. Ihr Inhalt wird nur durch Euch gepflegt. Je mehr Personen sich aktiv beteiligen, desto größer der Mehrwert für alle. Wichtig, respektiert einander! Kommentare? Schick mir eine E-Mail an post@codekenner.de
     show:
+      notes: Kurzmeldungen
     edit_score:
       title: Spielstand aktualisieren
     score_form:

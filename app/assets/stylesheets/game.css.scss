@@ -72,6 +72,10 @@
 
 .scoreboard__actions {
   margin-top: 1em;
+  margin-bottom: 1em;
+  .btn {
+    margin-top: 0.25em;
+  }
 }
 
 .scoreboard__author {
@@ -86,9 +90,6 @@
 }
 
 form.scoreentry {
-  .form-actions {
-    padding-top: 1em;
-  }
 
   .scoreentry__possession {
     label {

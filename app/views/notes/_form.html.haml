@@ -1,0 +1,14 @@
+= form_for [@game, @note], html: { class: 'form-horizontal', role: 'form' } do |f|
+  .row
+    .col-xs-12
+      %label.control-label= Note.human_attribute_name(:text)
+  .row
+    .controls
+      .col-xs-12= f.text_field :text, class: 'form-control'
+  .row
+    .col-xs-12
+      .form-actions
+        = f.submit nil, :class => 'btn btn-primary'
+        = link_to t('.cancel', :default => t("helpers.links.cancel")), game_path(@game), :class => 'btn'
+
+

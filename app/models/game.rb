@@ -5,6 +5,7 @@ class Game < ActiveRecord::Base
   belongs_to :user
   belongs_to :home_team, class_name: 'Team'
   belongs_to :away_team, class_name: 'Team'
+  has_many :notes
 
   scope :relevant, -> { where("game_day > '#{6.days.ago}'") }
 
