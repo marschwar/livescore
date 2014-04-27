@@ -1,53 +1,29 @@
-= form_for @game, html: { class: 'form-horizontal', role: 'form' } do |f|
-  .scoreentry__desktop.hidden-xs
-    .form-group
-      .row
-        .col-xs-4
-          %label.control-label= @game.home_team.name
-        - (1..4).each do |quarter|
-          .col-xs-2= f.text_field "home_quarter_#{quarter}", size: 5, class: 'form-control', namespace: :desktop
-    .form-group
-      .row
-        .col-xs-4
-          %label.control-label= @game.away_team.name
-        - (1..4).each do |quarter|
-          .col-xs-2= f.text_field "away_quarter_#{quarter}", size: 5, class: 'form-control', namespace: :desktop
-    .form-group
-      .row
-        - @period_options.each do |option|
-          .col-sm-2
-            %label.radio-inline
-              = f.radio_button :period, option[1], namespace: :desktop
-              = option[0]
-    .form-group.scoreentry__actions.form-actions
-      = f.submit nil, :class => 'btn btn-primary'
-      = link_to t('.cancel', :default => t("helpers.links.cancel")), games_path, :class => 'btn'
-  .scoreentry__mobile.visible-xs
-    .row.scoreentry__team.home
+= form_for @game, html: { class: 'form-horizontal scoreentry', role: 'form' } do |f|
+  .row.scoreentry__team.home
+    .col-xs-12
+      %label.control-label= @game.home_team.name
+  .row
+    .controls
+      - (1..4).each do |quarter|
+        .col-xs-3= f.text_field "home_quarter_#{quarter}", class: 'form-control'
+  .row.scoreentry__team.away
+    .col-xs-12
+      %label.control-label= @game.away_team.name
+  .row
+    .controls
+      - (1..4).each do |quarter|
+        .col-xs-3= f.text_field "away_quarter_#{quarter}", class: 'form-control'
+  .row.scoreentry__period
+    .col-xs-12
+      %label.control-label= t('.period')
+  .row
+    .controls
       .col-xs-12
-        %label.control-label= @game.home_team.name
-    .row
-      .controls
-        - (1..4).each do |quarter|
-          .col-xs-3= f.text_field "home_quarter_#{quarter}", class: 'form-control', namespace: :mobile
-    .row.scoreentry__team.away
-      .col-xs-12
-        %label.control-label= @game.away_team.name
-    .row
-      .controls
-        - (1..4).each do |quarter|
-          .col-xs-3= f.text_field "away_quarter_#{quarter}", class: 'form-control', namespace: :mobile
-    .row.scoreentry__period
-      .col-xs-12
-        %label.control-label= t('.period')
-    .row
-      .controls
-        .col-xs-12
-          =f.select :period, @period_options, {}, { namespace: :mobile, class: 'form-control'}
-    .row
-      .col-xs-12
-        .scoreentry__actions.form-actions
-          = f.submit nil, :class => 'btn btn-primary'
-          = link_to t('.cancel', :default => t("helpers.links.cancel")), games_path, :class => 'btn'
+        =f.select :period, @period_options, {}, {class: 'form-control'}
+  .row
+    .col-xs-12
+      .scoreentry__actions.form-actions
+        = f.submit nil, :class => 'btn btn-primary'
+        = link_to t('.cancel', :default => t("helpers.links.cancel")), games_path, :class => 'btn'
 
 
