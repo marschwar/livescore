@@ -9,6 +9,10 @@ class Game < ActiveRecord::Base
 
   scope :relevant, -> { where("game_day > '#{6.days.ago}'") }
 
+  def title
+    "#{home_team.name} vs. #{away_team.name}"
+  end
+
   def total_home
     total :home
   end
