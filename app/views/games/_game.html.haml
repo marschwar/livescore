@@ -32,8 +32,3 @@
       = game.send("#{type}_team").abbreviated_name
     - (1..4).each do |quarter|
       .col-xs-2.scoreboard__period-score= game.score type, quarter
-
-.row.scoreboard__author
-  .col-md-12
-    %span.glyphicon.glyphicon-user
-    %em= game.user.try :common_name

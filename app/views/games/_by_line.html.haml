@@ -1,0 +1,8 @@
+.row.small.text-muted
+  .col-xs-6
+    %span.glyphicon.glyphicon-user
+    %em= game.user.try :common_name
+  .col-xs-6
+    .score__updated.pull-right
+      %span.glyphicon.glyphicon-time
+      %em= distance_of_time_in_words_to_now game.updated_at, include_seconds: true

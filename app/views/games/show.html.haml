@@ -5,6 +5,7 @@
 
 .row
   .col-md-6
+    = render partial: 'by_line', locals: { game: @game }
     .scoreboard__game
       = render partial: 'game', locals: { game: @game }
 
@@ -24,4 +25,6 @@
           .panel-heading= t('.notes')
           %ul.list-group
             - @notes.each do |note|
-              %li.list-group-item= note.text
+              %li.list-group-item
+                %span= localize note.created_at
+                %em= note.text

@@ -12,6 +12,7 @@
   .row
     - row.each do |game|
       .col-md-6
+        = render partial: 'by_line', locals: { game: game }
         .scoreboard__game
           =render partial: 'game', locals: { game: game }
           .row.scoreboard__actions
