@@ -13,6 +13,8 @@ en:
         description: Ever wanted to know what the score during in any of the other games in your league? Share your teams score and promote the site.
         usage: The site is free to use for everyone. It is community driven so please respect each other. Let me know what you think and send a mail to post@codekenner.de
     show:
+      notes: Gamenotes
+      no_notes: No notes yet
     edit_score:
       title: Update Game Score
     score_form:

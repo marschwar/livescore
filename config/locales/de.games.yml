@@ -15,6 +15,7 @@ de:
         usage: Diese Seite ist für jeden kostenlos. Ihr Inhalt wird nur durch Euch gepflegt. Je mehr Personen sich aktiv beteiligen, desto größer der Mehrwert für alle. Wichtig, respektiert einander! Kommentare? Schick mir eine E-Mail an post@codekenner.de
     show:
       notes: Kurzmeldungen
+      no_notes: Noch keine Meldungen
     edit_score:
       title: Spielstand aktualisieren
     score_form:

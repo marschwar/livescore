@@ -20,11 +20,14 @@
 
   .col-md-6
     .game__notes
-      - if @notes
-        .panel.panel-default
+      .panel.panel-default
+        - if @notes.present?
           .panel-heading= t('.notes')
           %ul.list-group
             - @notes.each do |note|
               %li.list-group-item
                 %span= localize note.created_at
                 %em= note.text
+        - else
+          .panel-heading= t('.no_notes')
+
