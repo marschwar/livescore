@@ -17,6 +17,8 @@
           =render partial: 'game', locals: { game: game }
           .row.scoreboard__actions
             .col-md-12
-              = link_to t('games.links.show'), game_path(game), class: 'btn btn-xs btn-default'
+              = link_to t('games.links.show'), game_path(game)
               - if can? :update, game
                 = link_to t('games.links.update_score'), edit_score_game_path(game), :class => 'btn btn-xs btn-primary'
+              - if can? :create_note, game
+                = link_to t('games.links.create_note'), new_game_note_path(game), :class => 'btn btn-xs btn-default'
