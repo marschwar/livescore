@@ -1,13 +1,13 @@
 .row
-  .col-xs-12.scoreboard__period= t("activerecord.values.game.period.#{game.period}")
+  .col-xs-12.scoreboard__period{data: {livescore_path: "period"} }= t("activerecord.values.game.period.#{game.period}")
 .row
   .col-xs-12.scoreboard__location= game.location
 .row.scoreboard__team_images
   .col-xs-3.scoreboard__team-image.home= team_image game.home_team
   - if game.started?
-    .col-xs-2.scoreboard__scores.home= "#{game.total_home}"
+    .col-xs-2.scoreboard__scores.home{data: {livescore_path: "score.home.total"} }= "#{game.total_home}"
     .col-xs-2.scoreboard__scores= "-"
-    .col-xs-2.scoreboard__scores.away= "#{game.total_away}"
+    .col-xs-2.scoreboard__scores.away{data: {livescore_path: "score.away.total"} }= "#{game.total_away}"
   - else
     .col-xs-6.scoreboard__game-day
       %span.date= localize game.game_day
@@ -17,18 +17,18 @@
   .col-xs-3.scoreboard__team-image.away= team_image game.away_team
 -# Web
 - [:home, :away].each do |type|
-  .row.hidden-xs
+  .row.hidden-xs.scoreboard__team-score{class: type}
     .col-xs-8
       = possession_marker game, type
       = game.send("#{type}_team").name
     - (1..4).each do |quarter|
-      .col-xs-1.scoreboard__period-score= game.score type, quarter
+      .col-xs-1.scoreboard__period-score{data: {livescore_path: "score.#{type}.periods[#{quarter - 1}]"}}= game.score type, quarter
 
 -# Mobile
 - [:home, :away].each do |type|
-  .row.visible-xs
+  .row.visible-xs.scoreboard__team-score{class: type}
     .col-xs-4.scoreboard__team{class: type}
       = possession_marker game, type
       = game.send("#{type}_team").abbreviated_name
     - (1..4).each do |quarter|
-      .col-xs-2.scoreboard__period-score= game.score type, quarter
+      .col-xs-2.scoreboard__period-score{data: {livescore_path: "score.#{type}.periods[#{quarter - 1}]"}}= game.score type, quarter

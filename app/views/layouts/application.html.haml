@@ -46,3 +46,6 @@
 
       %footer
         %p &copy; CodeKenner 2014
+
+    - if content_for?(:js_footer)
+      = yield :js_footer

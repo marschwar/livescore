@@ -13,10 +13,12 @@ de:
         title: Livescore Community
         description: Warst du auch schon mal im Stadion und wolltest wissen, wie es bei einem anderen Spiel in Deiner Liga gerade steht? Aktualisiere den Spielstand deines Spiels und erzähle anderen davon.
         usage: Diese Seite ist für jeden kostenlos. Ihr Inhalt wird nur durch Euch gepflegt. Je mehr Personen sich aktiv beteiligen, desto größer der Mehrwert für alle. Wichtig, respektiert einander! Kommentare? Schick mir eine E-Mail an post@codekenner.de
-    show:
-      notes: Kurzmeldungen
-      no_notes: Noch keine Meldungen
+    game_notes:
+      title: Kurzmeldungen
+      title_no_notes: Noch keine Meldungen
     edit_score:
       title: Spielstand aktualisieren
     score_form:
       period: Aktuelle Spielzeit
+    info:
+      reload_not_neccessary: Du musst diese Seite nicht neu laden. Die Infos werden automatisch aktualisiert.

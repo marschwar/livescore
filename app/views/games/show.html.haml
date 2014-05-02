@@ -1,9 +1,16 @@
+- content_for :js_footer do
+  :javascript
+    $('.js-livescore').livescore({ type: 'game', interval: 35 })
+    $('.js-livescore-notes').livescore({ type: 'notes' })
+
 - title = @game.title
 - content_for :title, title
+
 .page-header
   %h1= title
+  %p.text-muted= t('games.info.reload_not_neccessary')
 
-.row
+.row.js-livescore{data: {url: "#{game_path @game}"}}
   .col-md-6
     = render partial: 'by_line', locals: { game: @game }
     .scoreboard__game
@@ -19,15 +26,4 @@
           = link_to t('games.links.destroy'), game_path(@game), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-xs btn-danger'
 
   .col-md-6
-    .game__notes
-      .panel.panel-default
-        - if @notes.present?
-          .panel-heading= t('.notes')
-          %ul.list-group
-            - @notes.each do |note|
-              %li.list-group-item
-                %span= localize note.created_at
-                %em= note.text
-        - else
-          .panel-heading= t('.no_notes')
-
+    = render partial: 'game_notes', locals: { game: @game, notes: @notes }

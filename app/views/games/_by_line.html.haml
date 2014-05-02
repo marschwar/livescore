@@ -5,4 +5,4 @@
   .col-xs-6
     .score__updated.pull-right
       %span.glyphicon.glyphicon-time
-      %em= distance_of_time_in_words_to_now game.updated_at, include_seconds: true
+      %em{data: {livescore_path: 'updated_at.words'}}= distance_of_time_in_words_to_now game.updated_at, include_seconds: true

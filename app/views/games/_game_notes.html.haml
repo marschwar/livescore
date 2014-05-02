@@ -1,0 +1,11 @@
+.game__notes.js-livescore-notes{data: {url: game_notes_path(game)}}
+  .panel.panel-default
+    - if notes.present?
+      .panel-heading= t('.title')
+      %ul.list-group
+        - notes.each do |note|
+          %li.list-group-item
+            %span= localize note.created_at
+            %em= note.text
+    - else
+      .panel-heading= t('.title_no_notes')

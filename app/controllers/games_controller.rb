@@ -1,6 +1,6 @@
 class GamesController < ApplicationController
   before_action :set_and_authorize_game, only: [:edit, :edit_score, :update, :update_score, :destroy]
-  before_action :set_game, only: [:show]
+  before_action :set_game, only: [:show, :notes]
   before_action :load_teams, only: [:new, :edit]
 
   before_action :load_teams, only: [:new, :edit]
@@ -16,6 +16,16 @@ class GamesController < ApplicationController
   # GET /games/1.json
   def show
     @notes = @game.notes.recent
+  end
+
+  # GET /games/1
+  # GET /games/1.json
+  def notes
+    if request.xhr?
+      render partial: 'game_notes', locals: { game: @game, notes: @game.notes.recent }
+    else
+      redirect_to game_path(@game)
+    end
   end
 
   # GET /games/new

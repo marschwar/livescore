@@ -6,6 +6,7 @@ Rails.application.routes.draw do
     resources :notes, only: [ :new, :create ]
     member do
       get 'edit_score'
+      get 'notes'
       post 'update_score'
     end
   end
