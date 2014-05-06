@@ -1,0 +1,26 @@
+
+@mixin with-border ($border-color) {
+  border-width: 1px 0 1px 0;
+  border-style: solid;
+  border-color: $border-color1 transparent $border-color transparent;
+}
+
+
+.livescore {
+  .livescore__topbar {
+    background: $background-color1;
+    @include with-border($border-color1);
+
+    span {
+      color: $fg1;
+    }
+  }
+
+  .livescore__quarters {
+    background-color: $background-color1;
+    @include with-border($border-color1);
+    table {
+      color: $fg1;
+    }
+  }
+}

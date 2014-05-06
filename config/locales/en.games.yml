@@ -22,3 +22,5 @@ en:
       period: Current Period
     info:
       reload_not_neccessary: There is no need to reload this page. The data is updated automatically.
+    widget:
+      provided_by: Powered by Livescore

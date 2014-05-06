@@ -22,3 +22,5 @@ de:
       period: Aktuelle Spielzeit
     info:
       reload_not_neccessary: Du musst diese Seite nicht neu laden. Die Infos werden automatisch aktualisiert.
+    widget:
+      provided_by: Powered by Livescore

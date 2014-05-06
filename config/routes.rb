@@ -7,6 +7,7 @@ Rails.application.routes.draw do
     member do
       get 'edit_score'
       get 'notes'
+      get 'widget'
       post 'update_score'
     end
   end

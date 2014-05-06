@@ -1,0 +1,39 @@
+- content_for :js_footer do
+  :javascript
+    $('.js-livescore').livescore( {type: 'game', interval: 45 } )
+
+.livescore.js-livescore{data: {url: "#{game_path @game}"}}
+  .livescore__topbar
+    %span.livescore__period= t("activerecord.values.game.period.#{@game.period}")
+    %span.livescore__location= truncate @game.location, length: 18
+  .livescore__logos
+    .livescore__logo_container
+      .livescore__logo.home= team_image @game.home_team, 90
+      .livescore__vs= 'vs.'
+      .livescore__logo.away= team_image @game.away_team, 90
+  .livescore__score
+    %span.home= @game.total_home
+    %span.away= @game.total_away
+  .livescore__quarters
+    %table
+      %thead
+        %tr
+          %th
+          %th
+          - (1..4).each do |quarter|
+            %th= quarter
+          %th= 'F'
+      %tr
+        %td= @game.home_team.name
+        %td
+        - (1..4).each do |quarter|
+          %td.points= @game.score :home, quarter
+        %td.points= @game.total_home
+      %tr
+        %td= @game.away_team.name
+        %td
+        - (1..4).each do |quarter|
+          %td.points= @game.score :away, quarter
+        %td.points= @game.total_away
+  .livescore__provided_by
+    =link_to t('.provided_by'), game_url(@game), target: '_blank'

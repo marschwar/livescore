@@ -1,6 +1,6 @@
 class GamesController < ApplicationController
   before_action :set_and_authorize_game, only: [:edit, :edit_score, :update, :update_score, :destroy]
-  before_action :set_game, only: [:show, :notes]
+  before_action :set_game, only: [:show, :notes, :widget]
   before_action :load_teams, only: [:new, :edit]
 
   before_action :load_teams, only: [:new, :edit]
@@ -16,6 +16,11 @@ class GamesController < ApplicationController
   # GET /games/1.json
   def show
     @notes = @game.notes.recent
+  end
+
+  def widget
+    @theme = widget_params[:theme] || :default
+    render 'widget', layout: 'widget'
   end
 
   # GET /games/1
@@ -109,6 +114,10 @@ class GamesController < ApplicationController
         :location,
         :game_day, :game_time
       )
+    end
+
+    def widget_params
+      params.permit(:theme)
     end
 
     def load_teams

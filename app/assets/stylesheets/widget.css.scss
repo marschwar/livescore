@@ -1,0 +1,163 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+ *= require_self
+ */
+$font-size: 12px;
+
+html {
+  color: black;
+  background: white;
+}
+
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,button,textarea,p,blockquote,th,td {
+  margin: 0;
+  padding: 0;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+body {
+  font: $font-size Iperion, Arial, helvetica, clean, sans-serif;
+}
+
+a, a:visited {
+  color: gray;
+  text-decoration: none;
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.livescore {
+
+  .livescore__topbar {
+    font-size: 120%;
+    height: 2em;
+
+    span {
+      line-height: 2em;
+      display: block;
+      text-transform: uppercase;
+
+      &.livescore__period {
+        float: left;
+        margin-left: 0.25em;
+      }
+
+      &.livescore__location {
+        float: right;
+        margin-right: 0.25em;
+      }
+    }
+  }
+
+  .livescore__logos {
+    height: 90px;
+    padding-top: 10px;
+    .livescore__logo_container {
+      margin: 0 auto;
+      width: 221px;
+    }
+    .livescore__logo {
+      float: left;
+      width: 90px;
+      height: 90px;
+    }
+    .livescore__vs {
+      display: inline-block;
+      float: left;
+      width: 41px;
+      font-size: 120%;
+      font-weight: bold;
+      line-height: 90px;
+      vertical-align: middle;
+      text-align: center;
+    }
+  }
+
+  .livescore__score {
+    clear: both;
+    font-size: 4em;
+    line-height: 1.2em;
+    font-weight: bold;
+    text-align: center;
+    span {
+      margin: 0 30px;
+    }
+  }
+
+  .livescore__quarters {
+    padding: 0.5em 0;
+    table {
+      width: 100%;
+    }
+
+    table td,
+    table th {
+      padding: 0.3em;
+    }
+
+    table thead tr th {
+      font-weight: bold;
+      text-align: center;
+    }
+
+    table tbody tr td.points {
+      width: 2em;
+      text-align: center;
+    }
+
+    #quarter table tbody tr td.points.final {
+      font-weight: bold;
+    }
+  }
+
+
+
+  form.livescore {
+    margin: 20px;
+  }
+
+  form.livescore div {
+    margin: 10px 0 5px 0;
+  }
+
+  form.livescore input[type="text"] {
+    padding: 1px 2px;
+  }
+
+  form.livescore input[type="text"].score {
+    width: 3em;
+    text-align: right;
+  }
+
+  form.livescore input[type="radio"] {
+    margin-left: 2px;
+    margin-right: 10px;
+  }
+
+  label.row {
+    clear: left;
+    float: left;
+    width: 5em; /* or whatever length suits */
+  }
+
+  .livescore__provided_by {
+    font-size: 90%;
+    text-align: center;
+    padding: 1em;
+  }
+}
