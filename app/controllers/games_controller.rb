@@ -6,6 +6,7 @@ class GamesController < ApplicationController
   before_action :load_teams, only: [:new, :edit]
 
   skip_before_action :force_https, only: :widget
+  after_action :allow_iframe, only: :widget
 
   # GET /games
   # GET /games.json
@@ -94,35 +95,40 @@ class GamesController < ApplicationController
     end
   end
 
-  private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_game
-      @game = Game.find(params[:id])
-    end
+private
+  # Use callbacks to share common setup or constraints between actions.
+  def set_game
+    @game = Game.find(params[:id])
+  end
 
-    def set_and_authorize_game
-      set_game
-      authorize! action_name.to_sym, @game
-    end
+  def set_and_authorize_game
+    set_game
+    authorize! action_name.to_sym, @game
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def game_params
-      params.require(:game).permit(
-        :home_team_id,
-        :away_team_id,
-        :home_quarter_1, :home_quarter_2, :home_quarter_3, :home_quarter_4,
-        :away_quarter_1, :away_quarter_2, :away_quarter_3, :away_quarter_4,
-        :period, :possession,
-        :location,
-        :game_day, :game_time
-      )
-    end
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def game_params
+    params.require(:game).permit(
+      :home_team_id,
+      :away_team_id,
+      :home_quarter_1, :home_quarter_2, :home_quarter_3, :home_quarter_4,
+      :away_quarter_1, :away_quarter_2, :away_quarter_3, :away_quarter_4,
+      :period, :possession,
+      :location,
+      :game_day, :game_time
+    )
+  end
 
-    def widget_params
-      params.permit(:theme)
-    end
+  def widget_params
+    params.permit(:theme)
+  end
 
-    def load_teams
-      @teams = Team.all.order(:name)
-    end
+  def load_teams
+    @teams = Team.all.order(:name)
+  end
+
+  # removes the 'SAMEORIGIN' value for 'X-Frame-Options' header
+  def allow_iframe
+    response.headers.except! 'X-Frame-Options'
+  end
 end
