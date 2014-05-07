@@ -43,7 +43,7 @@ Rails.application.configure do
   config.force_ssl = true
   # Allow the widget to be accessed with http instead of https
   config.ssl_options = {
-    exclude: proc { |env| env['PATH_INFO'].end_with('/widget') }
+    exclude: proc { |env| env['PATH_INFO'] =~ /\/games\/\d+\/widget/ }
   }
   # Set to :debug to see everything in the log.
   config.log_level = :info
