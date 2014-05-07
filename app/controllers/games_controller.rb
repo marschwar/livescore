@@ -5,6 +5,8 @@ class GamesController < ApplicationController
 
   before_action :load_teams, only: [:new, :edit]
 
+  skip_before_action :force_https, only: :widget
+
   # GET /games
   # GET /games.json
   def index
