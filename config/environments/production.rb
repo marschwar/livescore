@@ -41,7 +41,10 @@ Rails.application.configure do
 
   # Force all access to the app over SSL, use Strict-Transport-Security, and use secure cookies.
   config.force_ssl = true
-
+  # Allow the widget to be accessed with http instead of https
+  config.ssl_options = {
+    exclude: proc { |env| env['PATH_INFO'].end_with('/widget') }
+  }
   # Set to :debug to see everything in the log.
   config.log_level = :info
 
