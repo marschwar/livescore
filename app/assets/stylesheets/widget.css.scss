@@ -64,40 +64,56 @@ a, a:visited {
     }
   }
 
-  .livescore__logos {
-    height: 90px;
-    padding-top: 10px;
-    .livescore__logo_container {
-      margin: 0 auto;
-      width: 221px;
-    }
-    .livescore__logo {
-      float: left;
-      width: 90px;
+  .livescore__head {
+    padding: 10px;
+
+    .livescore__logos {
       height: 90px;
+      .livescore__logo_container {
+        margin: 0 auto;
+        width: 221px;
+      }
+      .livescore__logo {
+        float: left;
+        width: 90px;
+        height: 90px;
+      }
+      .livescore__vs {
+        display: inline-block;
+        float: left;
+        width: 41px;
+        font-size: 120%;
+        font-weight: bold;
+        line-height: 90px;
+        vertical-align: middle;
+        text-align: center;
+      }
     }
-    .livescore__vs {
-      display: inline-block;
-      float: left;
-      width: 41px;
-      font-size: 120%;
+
+    .livescore__score {
+      clear: both;
+      font-size: 4em;
+      line-height: 1.2em;
       font-weight: bold;
-      line-height: 90px;
-      vertical-align: middle;
       text-align: center;
+      span {
+        padding: 0 10px;
+      }
+    }
+
+    .livescore__date {
+      clear: both;
+      font-size: 3em;
+      line-height: 1.2em;
+      font-weight: bold;
+      text-align: center;
+      .livescore__time {
+        font-size: 0.5em;
+        line-height: 1em;
+      }
     }
   }
 
-  .livescore__score {
-    clear: both;
-    font-size: 4em;
-    line-height: 1.2em;
-    font-weight: bold;
-    text-align: center;
-    span {
-      margin: 0 30px;
-    }
-  }
 
   .livescore__quarters {
     padding: 0.5em 0;
