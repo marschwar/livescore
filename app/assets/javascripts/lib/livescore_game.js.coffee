@@ -18,12 +18,21 @@ class window.LivescoreGame
     @element.data('url')
 
   update_ui: (data) ->
+    @update_visible_elements data
     @update_fields data
     @update_possession_marker data
 
   cancelTimer: (data) ->
     if data.final
       clearInterval(@poller)
+
+  update_visible_elements: (data) ->
+    if data.started
+      @element.find('.livescore__score').removeClass('hidden')
+      @element.find('.livescore__date').addClass('hidden')
+    else
+      @element.find('.livescore__date').removeClass('hidden')
+      @element.find('.livescore__score').addClass('hidden')
 
   update_fields: (data) ->
     @element.find("*[data-livescore-path]").each ->

@@ -4,7 +4,7 @@
 
 .livescore.js-livescore{data: {url: "#{game_path @game}"}}
   .livescore__topbar
-    %span.livescore__period= t("activerecord.values.game.period.#{@game.period}")
+    %span.livescore__period{data: {livescore_path: "period"} }= t("activerecord.values.game.period.#{@game.period}")
     %span.livescore__location= truncate @game.location, length: 18
   .livescore__head
     .livescore__logos
@@ -12,17 +12,15 @@
         .livescore__logo.home= team_image @game.home_team, 90
         .livescore__vs= 'vs.'
         .livescore__logo.away= team_image @game.away_team, 90
-    - if @game.started?
-      .livescore__score
-        %span.home{data: {livescore_path: "score.home.total"} }= @game.total_home
-        %span= "-"
-        %span.away{data: {livescore_path: "score.away.total"} }= @game.total_away
-    - else
-      .livescore__date
-        %span.date= localize @game.game_day
-        - if @game.game_time.present?
-          .livescore__time
-            =@game.game_time
+    .livescore__score{class: "#{'hidden' unless @game.started?}"}
+      %span.home{data: {livescore_path: "score.home.total"} }= @game.total_home
+      %span= "-"
+      %span.away{data: {livescore_path: "score.away.total"} }= @game.total_away
+    .livescore__date{class: "#{'hidden' if @game.started?}"}
+      %span.date= localize @game.game_day
+      - if @game.game_time.present?
+        .livescore__time
+          =@game.game_time
 
   .livescore__quarters
     %table

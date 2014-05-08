@@ -4,11 +4,11 @@
   .col-xs-12.scoreboard__location= game.location
 .row.scoreboard__team_images
   .col-xs-3.scoreboard__team-image.home= team_image game.home_team
-  - if game.started?
+  .livescore__score{class: "#{'hidden' unless game.started?}"}
     .col-xs-2.scoreboard__scores.home{data: {livescore_path: "score.home.total"} }= "#{game.total_home}"
     .col-xs-2.scoreboard__scores= "-"
     .col-xs-2.scoreboard__scores.away{data: {livescore_path: "score.away.total"} }= "#{game.total_away}"
-  - else
+  .livescore__date{class: "#{'hidden' if game.started?}"}
     .col-xs-6.scoreboard__game-day
       %span.date= localize game.game_day
       - if game.game_time.present?

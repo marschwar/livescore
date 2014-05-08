@@ -43,6 +43,10 @@ a, a:visited {
 
 .livescore {
 
+  .hidden {
+    display: none;
+  }
+
   .livescore__topbar {
     font-size: 120%;
     height: 2em;
