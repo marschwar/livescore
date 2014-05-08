@@ -41,6 +41,10 @@ class Game < ActiveRecord::Base
     period.to_s.start_with? 'quarter'
   end
 
+  def final?
+    period.to_sym == :final
+  end
+
   def total(type)
     (1..4).inject(0) do |sum, quarter|
       sum + score(type, quarter)

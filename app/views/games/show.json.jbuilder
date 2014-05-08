@@ -4,6 +4,7 @@ json.user @game.user.try(:common_name)
 json.(@game, :location, :game_day, :game_time)
 json.possession @game.possession if @game.playing?
 json.period t("activerecord.values.game.period.#{@game.period}")
+json.final @game.final?
 json.updated_at do |updated_at|
   updated_at.time @game.updated_at
   updated_at.words distance_of_time_in_words_to_now @game.updated_at, include_seconds: true

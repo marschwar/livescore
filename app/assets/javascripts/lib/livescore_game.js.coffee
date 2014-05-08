@@ -5,12 +5,13 @@ class window.LivescoreGame
 
   setupPolling: ->
     self = @
-    setInterval( ->
+    self.poller = setInterval( ->
       $.ajax self.getUrl(),
         type: 'GET'
         dataType: 'json'
         success: (data, textStatus, jqXHR) ->
           self.update_ui data
+          self.cancelTimer data
     , @interval * 1000)
 
   getUrl: ->
@@ -19,6 +20,10 @@ class window.LivescoreGame
   update_ui: (data) ->
     @update_fields data
     @update_possession_marker data
+
+  cancelTimer: (data) ->
+    if data.final
+      clearInterval(@poller)
 
   update_fields: (data) ->
     @element.find("*[data-livescore-path]").each ->
