@@ -18,7 +18,7 @@ class window.LivescoreGame
     @element.data('url')
 
   update_ui: (data) ->
-    @update_visible_elements data
+    @update_started_marker data
     @update_fields data
     @update_possession_marker data
 
@@ -26,13 +26,11 @@ class window.LivescoreGame
     if data.final
       clearInterval(@poller)
 
-  update_visible_elements: (data) ->
+  update_started_marker: (data) ->
     if data.started
-      @element.find('.livescore__score').removeClass('hidden')
-      @element.find('.livescore__date').addClass('hidden')
+      @element.addClass('started')
     else
-      @element.find('.livescore__date').removeClass('hidden')
-      @element.find('.livescore__score').addClass('hidden')
+      @element.removeClass('started')
 
   update_fields: (data) ->
     @element.find("*[data-livescore-path]").each ->

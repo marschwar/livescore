@@ -16,7 +16,7 @@
 - @games.each_slice(2) do |row|
   .row
     - row.each do |game|
-      .col-md-6.js-livescore{data: {url: "#{game_path game}"}}
+      .col-md-6.livescore.js-livescore{data: {url: "#{game_path game}"}, class: "#{'started' if game.started?}"}
         = render partial: 'by_line', locals: { game: game }
         .scoreboard__game
           =render partial: 'game', locals: { game: game }
