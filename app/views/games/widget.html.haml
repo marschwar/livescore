@@ -37,7 +37,7 @@
             %td= @game.send("#{type}_team").name
             %td
             - (1..4).each do |quarter|
-              %td.points{data: {livescore_path: "score.#{type}.periods[#{quarter - 1}]"}}= @game.score :home, quarter
+              %td.points{data: {livescore_path: "score.#{type}.periods[#{quarter - 1}]"}}= @game.score type, quarter
             %td.points{data: {livescore_path: "score.#{type}.total"} }= @game.total type
   .livescore__provided_by
     =link_to t('.provided_by'), game_url(@game), target: '_blank'
