@@ -18,7 +18,7 @@ class GamesController < ApplicationController
   # GET /games/1
   # GET /games/1.json
   def show
-    @notes = @game.notes.recent
+    @notes = @game.notes.recent 25
     if can? :create_supporter, @game
       @supporter = Supporter.new
     end

@@ -1,5 +1,5 @@
 class Note < ActiveRecord::Base
   belongs_to :game
 
-  scope :recent, -> { order(created_at: :desc).limit(10) }
+  scope :recent, -> (count = 10) { order(created_at: :desc).limit(count) }
 end
