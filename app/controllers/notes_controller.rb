@@ -1,10 +1,15 @@
 class NotesController < ApplicationController
   before_action :set_and_authorize_game, only: [:new, :create]
+  before_action :set_game, only: [:index]
 
   # GET /games/:game_id/notes/new
   def new
     @note = Note.new
     @note.game = @game
+  end
+
+  def index
+    @notes = @game.notes.order(created_at: :desc)
   end
 
   # POST /games/:game_id/notes

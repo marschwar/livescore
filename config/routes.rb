@@ -3,7 +3,7 @@ Rails.application.routes.draw do
 
   resources :teams
   resources :games do
-    resources :notes, only: [ :new, :create ]
+    resources :notes, only: [ :index, :new, :create ]
     resources :supporters, only: [ :new, :create, :destroy ]
     member do
       get 'edit_score'
