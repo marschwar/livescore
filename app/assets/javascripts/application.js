@@ -16,4 +16,4 @@
 //= require bootstrap
 //= require games
 //= require_tree ./lib
-
+//= require_tree ./vendor

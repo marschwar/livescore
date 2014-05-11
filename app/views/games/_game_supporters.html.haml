@@ -1,0 +1,17 @@
+.panel.panel-default
+  .panel-heading= t('.title')
+  - if game.supporters.blank?
+    .panel-body
+      %p= t('.none')
+  - else
+    %ul.list-group
+    - game.supporters.each do |supporter|
+      %li.list-group-item
+        = supporter.user.common_name
+        = link_to t('.links.destroy'), game_supporter_path(@game, supporter), :method => :delete, class: 'pull-right'
+  .panel-body
+    = form_for [game, @supporter], html: { class: 'form-inline', role: 'form' } do |f|
+      .form-group
+        = f.text_field :user, placeholder: t('.user_name.placeholder'), class: 'form-control js-typeahead', data: { url: "#{users_path}", name: "users" }
+      .form-actions
+        = f.submit t('.links.create'), :class => 'btn btn-primary btn-xs'

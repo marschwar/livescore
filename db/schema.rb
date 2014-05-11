@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140427182637) do
+ActiveRecord::Schema.define(version: 20140510211041) do
 
   create_table "games", force: true do |t|
     t.integer  "home_team_id",                                    null: false
@@ -40,6 +40,16 @@ ActiveRecord::Schema.define(version: 20140427182637) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "supporters", force: true do |t|
+    t.integer  "game_id",    null: false
+    t.integer  "user_id",    null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "supporters", ["game_id"], name: "index_supporters_on_game_id", using: :btree
+  add_index "supporters", ["user_id"], name: "index_supporters_on_user_id", using: :btree
 
   create_table "teams", force: true do |t|
     t.string   "name"

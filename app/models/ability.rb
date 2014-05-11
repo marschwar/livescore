@@ -19,6 +19,9 @@ private
       can :manage, Game do |game|
         game.user_id == @user.id
       end
+      can [:edit_score, :update_score, :update], Game do |game|
+        game.supported_by @user
+      end
       can [:create, :update], Team
     end
 

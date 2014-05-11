@@ -24,3 +24,11 @@ de:
       reload_not_neccessary: Du musst diese Seite nicht neu laden. Die Infos werden automatisch aktualisiert.
     widget:
       provided_by: Powered by Livescore
+    game_supporters:
+      title: Stellvertreter
+      none: Du kannst Stellvertreter benennen, die dieses Spiel auch bearbeiten dürfen. Sie müssen sich einmal mit ihrem Facebook Konto hier angemeldet haben. Tippe dann einfach den Facebook Names deines Stellvertreteres ein und drücke 'Hinzufügen'.
+      user_name:
+        placeholder: Neuer Stellvertreter
+      links:
+        create: Hinzufügen
+        destroy: Entfernen

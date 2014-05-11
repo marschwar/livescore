@@ -1,3 +1,26 @@
-# Place all the behaviors and hooks related to the matching controller here.
-# All this logic will automatically be available in application.js.
-# You can use CoffeeScript in this file: http://coffeescript.org/
+@app ?= {}
+
+(($) ->
+
+  $(document).ready ->
+    app.games.init()
+
+  app.games =
+    init: ->
+      @init_typeahead()
+
+    init_typeahead: ->
+      $('input.js-typeahead').each ->
+        $this = $(this)
+        url = $(this).data('url')
+        $this.typeahead {
+          items: 4,
+          minLength: 3,
+          source: (query, process) ->
+            $.get url + "?q=" + query, (data) ->
+              process data
+            , 'json'
+        }
+
+) jQuery
+

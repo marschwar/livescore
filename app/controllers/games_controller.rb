@@ -19,6 +19,9 @@ class GamesController < ApplicationController
   # GET /games/1.json
   def show
     @notes = @game.notes.recent
+    if can? :create_supporter, @game
+      @supporter = Supporter.new
+    end
   end
 
   def widget
