@@ -57,10 +57,15 @@ class TeamsController < ApplicationController
   # DELETE /teams/1
   # DELETE /teams/1.json
   def destroy
-    @team.destroy
-    respond_to do |format|
-      format.html { redirect_to teams_url }
-      format.json { head :no_content }
+    if Game.where('away_team_id = ? or home_team_id = ?', @team, @team).count == 0
+      @team.destroy
+      respond_to do |format|
+        format.html { redirect_to teams_url }
+        format.json { head :no_content }
+      end
+    else
+      flash[:error] = 'Es gibt bereits Spiele für dieses Team'
+      redirect_to team_path @team
     end
   end
 
