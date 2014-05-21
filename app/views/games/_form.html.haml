@@ -14,11 +14,11 @@
   .form-group
     = f.label :game_time, :class => 'control-label'
     .controls
-      = f.text_field :game_time, :class => 'form-control', placeholder: "15:00"
+      = f.text_field :game_time, :class => 'form-control', placeholder: "15:00", maxlength: 255
   .form-group
     = f.label :location, :class => 'control-label'
     .controls
-      = f.text_field :location, :class => 'form-control'
+      = f.text_field :location, :class => 'form-control', maxlength: 255
   .form-group.form-actions
     = f.submit nil, :class => 'btn btn-primary'
     = link_to t('.cancel', :default => t("helpers.links.cancel")), games_path, :class => 'btn btn-default'
