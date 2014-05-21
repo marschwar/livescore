@@ -2,3 +2,6 @@ de:
   notes:
     index:
       title: "Notizen zum Spiel"
+    notes:
+      title: Kurzmeldungen
+      title_no_notes: Noch keine Meldungen
