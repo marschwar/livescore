@@ -4,7 +4,7 @@
       %label.control-label= Note.human_attribute_name(:text)
   .row
     .controls
-      .col-xs-12= f.text_field :text, class: 'form-control'
+      .col-xs-12= f.text_field :text, class: 'form-control', maxlength: 255
   .row
     .col-xs-12
       .form-actions

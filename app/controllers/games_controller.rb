@@ -29,16 +29,6 @@ class GamesController < ApplicationController
     render 'widget', layout: 'widget'
   end
 
-  # GET /games/1
-  # GET /games/1.json
-  def notes
-    if request.xhr?
-      render partial: 'game_notes', locals: { game: @game, notes: @game.notes.recent }
-    else
-      redirect_to game_path(@game)
-    end
-  end
-
   # GET /games/new
   def new
     @game = Game.new

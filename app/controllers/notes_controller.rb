@@ -10,6 +10,9 @@ class NotesController < ApplicationController
 
   def index
     @notes = @game.notes.order(created_at: :desc)
+    if request.xhr?
+      render partial: 'notes', locals: { game: @game, notes: @notes }
+    end
   end
 
   # POST /games/:game_id/notes
