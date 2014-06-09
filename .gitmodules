@@ -1,24 +1,24 @@
 [submodule "vagrant/cookbooks/rbenv"]
 	path = vagrant/cookbooks/rbenv
-	url = git@github.com:fnichol/chef-rbenv.git
+	url = git://github.com:fnichol/chef-rbenv.git
 [submodule "vagrant/cookbooks/mysql"]
 	path = vagrant/cookbooks/mysql
-	url = git@github.com:opscode-cookbooks/mysql.git
+	url = git://github.com:opscode-cookbooks/mysql.git
 [submodule "vagrant/cookbooks/ruby_build"]
 	path = vagrant/cookbooks/ruby_build
-	url = git@github.com:fnichol/chef-ruby_build.git
+	url = git://github.com:fnichol/chef-ruby_build.git
 [submodule "vagrant/cookbooks/vim"]
 	path = vagrant/cookbooks/vim
 	url = git://github.com/opscode-cookbooks/vim.git
 [submodule "vagrant/cookbooks/build-essential"]
 	path = vagrant/cookbooks/build-essential
-	url = git@github.com:opscode-cookbooks/build-essential.git
+	url = git://github.com:opscode-cookbooks/build-essential.git
 [submodule "vagrant/cookbooks/postgresql"]
 	path = vagrant/cookbooks/postgresql
-	url = git@github.com:cookbooks/postgresql.git
+	url = git://github.com:cookbooks/postgresql.git
 [submodule "vagrant/cookbooks/openssl"]
 	path = vagrant/cookbooks/openssl
-	url = git@github.com:opscode-cookbooks/openssl.git
+	url = git://github.com:opscode-cookbooks/openssl.git
 [submodule "vagrant/cookbooks/heroku-toolbelt"]
 	path = vagrant/cookbooks/heroku-toolbelt
-	url = git@github.com:jimeh/chef-heroku-toolbelt.git
+	url = git://github.com:jimeh/chef-heroku-toolbelt.git
