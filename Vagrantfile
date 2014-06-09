@@ -42,6 +42,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     chef.add_recipe "postgresql::client"
     chef.add_recipe 'ruby_build'
     chef.add_recipe 'rbenv::user'
+    chef.add_recipe 'heroku-toolbelt'
 
     ruby_version = '2.0.0-p353'
     

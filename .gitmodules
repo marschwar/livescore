@@ -19,3 +19,6 @@
 [submodule "vagrant/cookbooks/openssl"]
 	path = vagrant/cookbooks/openssl
 	url = git@github.com:opscode-cookbooks/openssl.git
+[submodule "vagrant/cookbooks/heroku-toolbelt"]
+	path = vagrant/cookbooks/heroku-toolbelt
+	url = git@github.com:jimeh/chef-heroku-toolbelt.git
