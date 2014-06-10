@@ -1,6 +1,6 @@
 class NotesController < ApplicationController
   before_action :set_and_authorize_game, only: [:new, :create]
-  before_action :set_game, only: [:index]
+  before_action :set_game, only: [:index, :destroy]
 
   # GET /games/:game_id/notes/new
   def new
@@ -13,6 +13,14 @@ class NotesController < ApplicationController
     if request.xhr?
       render partial: 'notes', locals: { game: @game, notes: @notes }
     end
+  end
+
+  def destroy
+    authorize! :destroy_note, @game
+    @note = @game.notes.find params[:id]
+    @note.try(:destroy)
+
+    redirect_to game_path(@game)
   end
 
   # POST /games/:game_id/notes
