@@ -11,7 +11,7 @@ class GamesController < ApplicationController
   # GET /games
   # GET /games.json
   def index
-    @show_jumbo = true if request.path == '/'
+    @show_jumbo = anonymous and request.path == '/'
     @games = Game.relevant.order(updated_at: :desc )
   end
 
@@ -123,5 +123,9 @@ private
   # removes the 'SAMEORIGIN' value for 'X-Frame-Options' header
   def allow_iframe
     response.headers.except! 'X-Frame-Options'
+  end
+
+  def anonymous
+    current_user.blank?
   end
 end
