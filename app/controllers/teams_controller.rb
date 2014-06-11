@@ -1,6 +1,7 @@
 class TeamsController < ApplicationController
 
   IMG_MAX_SIZE = 50000
+  IMG_CONTENT_TYPES = %w(image/png image/jpg image/jpeg)
 
   before_action :set_team, only: [:show, :edit, :update, :destroy]
   before_action :encode_image_in_params, only: [:create, :update]
@@ -14,6 +15,11 @@ class TeamsController < ApplicationController
   # GET /teams/1
   # GET /teams/1.json
   def show
+    respond_to do |format|
+      format.png { send_team_image }
+      format.jpg { send_team_image }
+      format.html { }
+    end
   end
 
   # GET /teams/new
@@ -69,22 +75,31 @@ class TeamsController < ApplicationController
     end
   end
 
-  private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_team
-      @team = Team.find(params[:id])
-    end
+private
+  # Use callbacks to share common setup or constraints between actions.
+  def set_team
+    @team = Team.find(params[:id])
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def team_params
-      params.require(:team).permit(:name, :encoded_image)
-    end
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def team_params
+    params.require(:team).permit(:name, :encoded_image)
+  end
 
-    def encode_image_in_params
-      uploaded_io = params[:team].delete :encoded_image
-      if uploaded_io && uploaded_io.size < IMG_MAX_SIZE
-        img = Base64.encode64(uploaded_io.read)
-        params[:team][:encoded_image] = "data:#{uploaded_io.content_type};base64,#{img}"
-      end
+  def encode_image_in_params
+    uploaded_io = params[:team].delete :encoded_image
+    if valid_image?(uploaded_io)
+      img = Base64.encode64(uploaded_io.read)
+      params[:team][:encoded_image] = "data:#{uploaded_io.content_type};base64,#{img}"
     end
+  end
+
+  def valid_image?(uploaded_io)
+    uploaded_io && uploaded_io.size < IMG_MAX_SIZE && IMG_CONTENT_TYPES.include?(uploaded_io.content_type)
+  end
+
+  def send_team_image
+    response.headers["Expires"] = 1.year.from_now.httpdate
+    send_data @team.raw_image_data, type: @team.image_type.to_sym, disposition: :inline
+  end
 end
