@@ -99,7 +99,7 @@ private
   end
 
   def send_team_image
-    response.headers["Expires"] = 1.year.from_now.httpdate
+    response.headers["Cache-Control"] = 'public,max-age=600,s-maxage=1200'
     send_data @team.raw_image_data, type: @team.image_type.to_sym, disposition: :inline
   end
 end
