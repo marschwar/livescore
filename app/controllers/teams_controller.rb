@@ -9,7 +9,14 @@ class TeamsController < ApplicationController
   # GET /teams
   # GET /teams.json
   def index
-    @teams = Team.all
+    respond_to do |format|
+      format.json do
+        query = params[:q] || ''
+        team_names = Team.is_like(query).map &:name
+        render json: team_names
+      end
+      format.html { @teams = Team.all }
+    end
   end
 
   # GET /teams/1

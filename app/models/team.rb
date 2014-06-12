@@ -1,6 +1,10 @@
 class Team < ActiveRecord::Base
   belongs_to :user
 
+  scope :is_like, -> (name) { where("upper(name) like ?", "%#{name.upcase}%")}
+
+  validates :name, presence: true
+
   def abbreviated_name
   	if /(?<team_name>.*)\s(?<suffix>U\d+)\s*$/i =~ name
 	    short_name = team_name.split.map { |s| s[0] }.join

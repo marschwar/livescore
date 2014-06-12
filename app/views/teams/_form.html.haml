@@ -1,5 +1,5 @@
 = form_for @team, :html => { :class => 'form-horizontal', multipart: true } do |f|
-  .form-group
+  .form-group{class: "#{'has-error' if @team.errors[:name].present?}"}
     = f.label :name, :class => 'control-label'
     .controls
       = f.text_field :name, :class => 'form-control', maxlength: 255

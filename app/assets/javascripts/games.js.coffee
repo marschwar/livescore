@@ -12,10 +12,11 @@
     init_typeahead: ->
       $('input.js-typeahead').each ->
         $this = $(this)
-        url = $(this).data('url')
+        url = $this.data('url')
+        minLength = $this.data('minlength') || 3
         $this.typeahead {
           items: 4,
-          minLength: 3,
+          minLength: minLength,
           source: (query, process) ->
             $.get url + "?q=" + query, (data) ->
               process data

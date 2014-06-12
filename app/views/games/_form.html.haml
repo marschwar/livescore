@@ -1,12 +1,12 @@
 = form_for @game, :html => { :class => 'form-horizontal' } do |f|
-  .form-group
-    = f.label :home_team_id, :class => 'control-label'
+  .form-group{class: "#{'has-error' if @game.errors[:home_team].present?}"}
+    = f.label :home_team_name, :class => 'control-label'
     .controls
-      = f.collection_select :home_team_id, @teams, :id, :name, {}, {class: 'form-control'}
-  .form-group
-    = f.label :away_team_id, :class => 'control-label'
+      %input{id: :home_team_name, name: 'game[home_team_name]', type: :text, value: @game.home_team.try(:name), placeholder: t('.team_name.placeholder.home'), class: 'form-control js-typeahead', data: { url: "#{teams_path}", name: "teams", minlength: 2 }}
+  .form-group{class: "#{'has-error' if @game.errors[:away_team].present?}"}
+    = f.label :away_team_name, :class => 'control-label'
     .controls
-      = f.collection_select :away_team_id, @teams, :id, :name, {}, {class: 'form-control'}
+      %input{id: :away_team_name, name: 'game[away_team_name]', type: :text, value: @game.away_team.try(:name), placeholder: t('.team_name.placeholder.away'), class: 'form-control js-typeahead', data: { url: "#{teams_path}", name: "teams", minlength: 2 }}
   .form-group
     = f.label :game_day, :class => 'control-label'
     .controls

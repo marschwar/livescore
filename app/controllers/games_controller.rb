@@ -1,9 +1,6 @@
 class GamesController < ApplicationController
   before_action :set_and_authorize_game, only: [:edit, :edit_score, :update, :update_score, :destroy]
   before_action :set_game, only: [:show, :notes, :widget]
-  before_action :load_teams, only: [:new, :edit]
-
-  before_action :load_teams, only: [:new, :edit]
 
   skip_before_action :force_https, only: :widget
   after_action :allow_iframe, only: :widget
@@ -51,14 +48,19 @@ class GamesController < ApplicationController
   # POST /games
   # POST /games.json
   def create
-    @game = Game.new(game_params)
+    p = game_params
+
+    p[:home_team_id] = team_id(p.delete(:home_team_name))
+    p[:away_team_id] = team_id(p.delete(:away_team_name))
+    
+    @game = Game.new(p)
     @game.user = current_user
     respond_to do |format|
       if @game.save
         format.html { redirect_to @game, notice: 'Game was successfully created.' }
         format.json { render :show, status: :created, location: @game }
       else
-        format.html { render :new }
+        format.html { render :new, notice: 'Game was successfully created.' }
         format.json { render json: @game.errors, status: :unprocessable_entity }
       end
     end
@@ -67,8 +69,13 @@ class GamesController < ApplicationController
   # PATCH/PUT /games/1
   # PATCH/PUT /games/1.json
   def update
+    p = game_params
+
+    p[:home_team_id] = team_id(p.delete(:home_team_name))
+    p[:away_team_id] = team_id(p.delete(:away_team_name))
+
     respond_to do |format|
-      if @game.update(game_params)
+      if @game.update(p)
         format.html { redirect_to @game, notice: 'Game was successfully updated.' }
         format.json { render :show, status: :ok, location: @game }
       else
@@ -102,8 +109,8 @@ private
   # Never trust parameters from the scary internet, only allow the white list through.
   def game_params
     params.require(:game).permit(
-      :home_team_id,
-      :away_team_id,
+      :home_team_id, :home_team_name,
+      :away_team_id, :away_team_name,
       :home_quarter_1, :home_quarter_2, :home_quarter_3, :home_quarter_4,
       :away_quarter_1, :away_quarter_2, :away_quarter_3, :away_quarter_4,
       :period, :possession,
@@ -116,10 +123,6 @@ private
     params.permit(:theme)
   end
 
-  def load_teams
-    @teams = Team.all.order(:name)
-  end
-
   # removes the 'SAMEORIGIN' value for 'X-Frame-Options' header
   def allow_iframe
     response.headers.except! 'X-Frame-Options'
@@ -127,5 +130,9 @@ private
 
   def anonymous
     current_user.blank?
+  end
+
+  def team_id(team_name)
+    Team.where(name: team_name).first.try(:id) if team_name    
   end
 end

@@ -29,3 +29,8 @@ de:
       links:
         create: Hinzufügen
         destroy: Entfernen
+    form:
+      team_name:
+        placeholder: 
+          home: Name des Heimteams
+          away: Name des Gastteams
