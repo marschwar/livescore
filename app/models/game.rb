@@ -8,6 +8,8 @@ class Game < ActiveRecord::Base
   has_many :supporters
   has_many :notes
 
+  validates :home_team, :away_team, presence: true
+
   scope :relevant, -> { where("game_day > '#{6.days.ago}'") }
 
   def supported_by(user)
