@@ -71,8 +71,8 @@ class GamesController < ApplicationController
   def update
     p = game_params
 
-    p[:home_team_id] = team_id(p.delete(:home_team_name))
-    p[:away_team_id] = team_id(p.delete(:away_team_name))
+    p[:home_team_id] = team_id(p.delete(:home_team_name)) if p[:home_team_name].present?
+    p[:away_team_id] = team_id(p.delete(:away_team_name)) if p[:away_team_name].present?
 
     respond_to do |format|
       if @game.update(p)
