@@ -10,12 +10,11 @@ class AuthService
     info = auth_hash[:info]
     user.common_name = info[:name]
     user.email = info[:email]
+    user.image_url = info[:image] if info[:image].present?
 
     user.save!
 
     user
   end
-
-private
 
 end

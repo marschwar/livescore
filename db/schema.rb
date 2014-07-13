@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140510211041) do
+ActiveRecord::Schema.define(version: 20140713045922) do
 
   create_table "games", force: true do |t|
     t.integer  "home_team_id",                                    null: false
@@ -59,12 +59,14 @@ ActiveRecord::Schema.define(version: 20140510211041) do
   end
 
   create_table "users", force: true do |t|
-    t.string   "common_name",                  null: false
+    t.string   "common_name",                    null: false
     t.string   "social_id"
     t.string   "email"
-    t.string   "role",        default: "user", null: false
+    t.string   "role",          default: "user", null: false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.text     "encoded_image"
+    t.string   "image_type"
   end
 
 end
