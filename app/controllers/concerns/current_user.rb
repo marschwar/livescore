@@ -11,10 +11,14 @@ module CurrentUser
 
 private
   def check_for_user
-    id = session_user_id
-    id = remember_me unless id
+    id = session_user_id || remember_me
     begin
-      @current_user = User.find(id) if id
+      if id
+        @current_user = User.find(id)
+
+        # force re-login if user has no image yet
+        @current_user = nil unless session_user_id || @current_user.has_image?
+      end
     rescue
       logger.info "User_ID #{id} from session or cookie invalid"
     end
