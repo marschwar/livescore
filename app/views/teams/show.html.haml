@@ -9,7 +9,7 @@
 %p
   %strong= model_class.human_attribute_name(:encoded_image) + ':'
   %br
-  = team_image @team
+  = entity_image @team 
 
 
 = link_to t('.back', :default => t("helpers.links.back")), teams_path, :class => 'btn btn-default'

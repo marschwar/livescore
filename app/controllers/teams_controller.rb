@@ -1,4 +1,5 @@
 class TeamsController < ApplicationController
+  include EntityImage
 
   IMG_MAX_SIZE = 50000
   IMG_CONTENT_TYPES = %w(image/png image/jpg image/jpeg)
@@ -23,8 +24,8 @@ class TeamsController < ApplicationController
   # GET /teams/1.json
   def show
     respond_to do |format|
-      format.png { send_team_image }
-      format.jpg { send_team_image }
+      format.png { send_team_image :png }
+      format.jpg { send_team_image :jpeg }
       format.html { }
     end
   end
@@ -105,8 +106,7 @@ private
     uploaded_io && uploaded_io.size < IMG_MAX_SIZE && IMG_CONTENT_TYPES.include?(uploaded_io.content_type)
   end
 
-  def send_team_image
-    response.headers["Cache-Control"] = 'public,max-age=600,s-maxage=1200'
-    send_data @team.raw_image_data, type: @team.image_type.to_sym, disposition: :inline
+  def send_team_image(type)
+    send_image @team.raw_image_data, type
   end
 end

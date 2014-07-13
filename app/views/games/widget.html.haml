@@ -9,9 +9,9 @@
   .livescore__head
     .livescore__logos
       .livescore__logo_container
-        .livescore__logo.home= team_image @game.home_team, 90
+        .livescore__logo.home= entity_image @game.home_team, { size: 90 }
         .livescore__vs= 'vs.'
-        .livescore__logo.away= team_image @game.away_team, 90
+        .livescore__logo.away= entity_image @game.away_team, { size: 90 }
     .livescore__score.started_visible
       %span.home{data: {livescore_path: "score.home.total"} }= @game.total_home
       %span= "-"

@@ -12,7 +12,7 @@
     - @teams.each do |team|
       %tr
         %td= link_to team.id, team_path(team)
-        %td= team_image team
+        %td= entity_image team
         %td= team.name
         %td
           = link_to t('.edit', :default => t("helpers.links.edit")), edit_team_path(team), :class => 'btn btn-default btn-xs'
