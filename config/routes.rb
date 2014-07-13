@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   resources :games do
     resources :notes, only: [ :index, :new, :create, :destroy ]
     resources :supporters, only: [ :new, :create, :destroy ]
+    resources :comments, only: [ :new, :create ]
     member do
       get 'edit_score'
       get 'notes'

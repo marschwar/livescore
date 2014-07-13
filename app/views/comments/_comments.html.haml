@@ -1,0 +1,21 @@
+.panel.panel-default
+  .panel-heading= t('.title')
+  .panel-body
+    - if comments.empty?
+      %p= t('.first_comment')
+    %p
+      = form_for [game, @comment], html: { class: 'form', role: 'form' } do |f|
+        = f.text_field :text, placeholder: t('.placeholder'), class: 'form-control', maxlength: 255
+        .form-actions
+          = f.submit t('.create'), :class => 'btn btn-primary btn-xs'
+    - if comments.present?
+      %ul.list-group
+        - comments.each do |comment|
+          %li.list-group-item
+            - if comment.user.has_image?
+              = entity_image comment.user, { size: 20, class: 'img-rounded' }
+            - else
+              %span.glyphicon.glyphicon-user
+            %span.text-muted= comment.user.common_name
+            %em= comment.text
+            %span.text-muted= distance_of_time_in_words_to_now comment.created_at, include_seconds: true

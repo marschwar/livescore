@@ -7,6 +7,7 @@ class Game < ActiveRecord::Base
   belongs_to :away_team, class_name: 'Team'
   has_many :supporters
   has_many :notes
+  has_many :comments
 
   validates :home_team, :away_team, presence: true
 

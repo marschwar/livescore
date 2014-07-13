@@ -32,3 +32,6 @@
 - if can? :create_supporter, @game
   - content_for :sidebar do
     = render partial: 'game_supporters', locals: { game: @game }
+
+- content_for :sidebar do
+  = render partial: 'comments/game_comments', locals: { game: @game, comments: @comments }

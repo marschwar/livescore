@@ -11,7 +11,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140713045922) do
+ActiveRecord::Schema.define(version: 20140713134046) do
+
+  create_table "comments", force: true do |t|
+    t.integer  "game_id",    null: false
+    t.integer  "user_id",    null: false
+    t.string   "text"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "comments", ["game_id"], name: "index_comments_on_game_id", using: :btree
+  add_index "comments", ["user_id"], name: "index_comments_on_user_id", using: :btree
 
   create_table "games", force: true do |t|
     t.integer  "home_team_id",                                    null: false

@@ -23,6 +23,7 @@ private
         game.supported_by @user
       end
       can [:create, :update], Team
+      can [:create_comment], Game
     end
 
     def admin

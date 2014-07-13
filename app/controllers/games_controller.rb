@@ -16,8 +16,12 @@ class GamesController < ApplicationController
   # GET /games/1.json
   def show
     @notes = @game.notes.recent 25
+    @comments = @game.comments.recent 25
     if can? :create_supporter, @game
       @supporter = Supporter.new
+    end
+    if can? :create_comment, @game
+      @comment = Comment.new
     end
   end
 

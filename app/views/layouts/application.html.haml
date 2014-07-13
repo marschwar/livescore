@@ -26,24 +26,25 @@
           = bootstrap_flash
           = yield
         .col-lg-3
-          .well.sidebar-nav
-            %h3
-              = t('.sidebar.title')
-              %br
-              %small= t('.sidebar.sub_title')
-            %ul.nav.nav-list
-              - if @current_user
-                -# %li.nav-header= t('.sidebar.games')
-                - if can? :create, Game
-                  %li= link_to t(".links.new_game"), new_game_path
-                - if can? :create, Team
-                  %li= link_to t(".links.new_team"), new_team_path
-            - unless @current_user
-              %a{href: '/auth/facebook'}
-                %p= t(".sidebar.links.login_with_facebook")
-                = image_tag asset_path('social/64/facebook.jpg'), title: 'Facebook'
           - if content_for?(:sidebar)
             = yield :sidebar
+          - else
+            .well.sidebar-nav
+              %h3
+                = t('.sidebar.title')
+                %br
+                %small= t('.sidebar.sub_title')
+              %ul.nav.nav-list
+                - if @current_user
+                  -# %li.nav-header= t('.sidebar.games')
+                  - if can? :create, Game
+                    %li= link_to t(".links.new_game"), new_game_path
+                  - if can? :create, Team
+                    %li= link_to t(".links.new_team"), new_team_path
+              - unless @current_user
+                %a{href: '/auth/facebook'}
+                  %p= t(".sidebar.links.login_with_facebook")
+                  = image_tag asset_path('social/64/facebook.jpg'), title: 'Facebook'
 
 
       %footer
