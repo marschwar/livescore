@@ -127,11 +127,6 @@ private
     params.permit(:theme)
   end
 
-  # removes the 'SAMEORIGIN' value for 'X-Frame-Options' header
-  def allow_iframe
-    response.headers.except! 'X-Frame-Options'
-  end
-
   def anonymous
     current_user.blank?
   end

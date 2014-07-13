@@ -21,4 +21,10 @@ class ApplicationController < ActionController::Base
   def force_https
     force_ssl_redirect if Rails.env.production?
   end
+
+  # removes the 'SAMEORIGIN' value for 'X-Frame-Options' header
+  def allow_iframe
+    response.headers.except! 'X-Frame-Options'
+  end
+
 end
