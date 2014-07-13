@@ -5,7 +5,7 @@
       - if comments.empty?
         %p= t('.first_comment')
       %p
-        = form_for [game, comment], html: { class: 'form', role: 'form' } do |f|
+        = form_for [game, @comment], html: { class: 'form', role: 'form' } do |f|
           = f.text_field :text, placeholder: t('.placeholder'), class: 'form-control', maxlength: 255
           .form-actions
             = f.submit t('.create'), :class => 'btn btn-primary btn-xs'
