@@ -1,13 +1,18 @@
 .panel.panel-default
   .panel-heading= t('.title')
   .panel-body
-    - if comments.empty?
-      %p= t('.first_comment')
-    %p
-      = form_for [game, @comment], html: { class: 'form', role: 'form' } do |f|
-        = f.text_field :text, placeholder: t('.placeholder'), class: 'form-control', maxlength: 255
-        .form-actions
-          = f.submit t('.create'), :class => 'btn btn-primary btn-xs'
+    - if can? :create_comment, game
+      - if comments.empty?
+        %p= t('.first_comment')
+      %p
+        = form_for [game, comment], html: { class: 'form', role: 'form' } do |f|
+          = f.text_field :text, placeholder: t('.placeholder'), class: 'form-control', maxlength: 255
+          .form-actions
+            = f.submit t('.create'), :class => 'btn btn-primary btn-xs'
+    - else
+      %p
+        %a{href: '/auth/facebook'}
+          = t('.login')
     - if comments.present?
       %ul.list-group
         - comments.each do |comment|
