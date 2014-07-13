@@ -2,6 +2,9 @@ class NotesController < ApplicationController
   before_action :set_and_authorize_game, only: [:new, :create]
   before_action :set_game, only: [:index, :destroy]
 
+  skip_before_action :force_https, only: :widget
+  after_action :allow_iframe, only: :widget
+
   # GET /games/:game_id/notes/new
   def new
     @note = Note.new
@@ -13,6 +16,14 @@ class NotesController < ApplicationController
     if request.xhr?
       render partial: 'notes', locals: { game: @game, notes: @notes }
     end
+  end
+
+  def widget
+    @game = Game.find(params[:id])
+    @notes = @game.notes.order(created_at: :desc)
+    @theme = widget_params[:theme] || :default
+
+    render 'widget', layout: 'widget'
   end
 
   def destroy
@@ -51,5 +62,9 @@ private
 
   def note_params
     params.require(:note).permit(:text)
+  end
+
+  def widget_params
+    params.permit(:theme)
   end
 end

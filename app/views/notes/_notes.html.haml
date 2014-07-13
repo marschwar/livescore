@@ -4,8 +4,8 @@
     %ul.list-group
       - notes.each do |note|
         %li.list-group-item
-          - if can? :destroy_note, @game
-            %a{href: game_note_path(@game, note), data: {method: :delete, confirm: t('.confirm', default: t("helpers.links.confirm", default: 'Sicher?'))}}
+          - if can? :destroy_note, game
+            %a{href: game_note_path(game, note), data: {method: :delete, confirm: t('.confirm', default: t("helpers.links.confirm", default: 'Sicher?'))}}
               %span.pull-right.glyphicon.glyphicon-trash
           %span= localize note.created_at
           %em= note.text

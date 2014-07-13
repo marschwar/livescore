@@ -8,8 +8,8 @@ Rails.application.routes.draw do
     resources :comments, only: [ :new, :create ]
     member do
       get 'edit_score'
-      get 'notes'
       get 'widget'
+      get 'widget/notes', to: 'notes#widget'
       post 'update_score'
     end
   end

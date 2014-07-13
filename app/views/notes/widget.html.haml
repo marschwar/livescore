@@ -1,0 +1,7 @@
+- content_for :js_footer do
+  :javascript
+    $('.js-livescore-notes').livescore( {type: 'notes', interval: 15 } )
+
+.livescore.js-livescore-notes{data: {url: "#{game_notes_path @game}"}, class: "#{'started' if @game.started?}"}
+  = render partial: 'notes', locals: {game: @game, notes: @notes}
+

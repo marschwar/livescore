@@ -7,13 +7,11 @@
 
 
 .livescore {
-  .livescore__topbar {
+  .livescore__topbar, .panel-heading {
     background: $background-color1;
     @include with-border($border-color1);
 
-    span {
-      color: $fg1;
-    }
+    color: $fg1;
   }
 
   .livescore__quarters {
