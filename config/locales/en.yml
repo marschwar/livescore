@@ -33,3 +33,15 @@ en:
           quarter_3: 3. Quarter
           quarter_4: 4. Quarter
           final: Final
+  date:
+    formats:
+      default: '%Y-%m-%d'
+      long: '%e. %B %Y'
+      short: '%e. %b'
+  time:
+    am: a.m.
+    formats:
+      default: '%H:%M'
+      long: '%A, %d. %B %Y, %H:%M Uhr'
+      short: '%d. %B, %H:%M Uhr'
+    pm: p.m.
