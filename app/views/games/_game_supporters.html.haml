@@ -7,6 +7,8 @@
     %ul.list-group
     - game.supporters.each do |supporter|
       %li.list-group-item
+        - if supporter.user.has_image?
+          = entity_image supporter.user, { size: 25, class: 'img-rounded' }
         = supporter.user.common_name
         = link_to t('.links.destroy'), game_supporter_path(@game, supporter), :method => :delete, class: 'pull-right'
   .panel-body

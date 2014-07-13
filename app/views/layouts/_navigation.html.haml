@@ -13,6 +13,7 @@
       - if @current_user
         .navbar-text.dropdown.pull-right
           %a.dropdown-toggle{href: '#', 'data-toggle' => "dropdown"}
+            = entity_image @current_user, {size: 40, title: @current_user.common_name, class: 'img-rounded' }
             = "#{@current_user.common_name}"
             %span.caret
           %ul.dropdown-menu

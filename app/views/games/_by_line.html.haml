@@ -1,6 +1,9 @@
 .row.small.text-muted
   .col-xs-6
-    %span.glyphicon.glyphicon-user
+    - if game.user.try :has_image?
+      = entity_image game.user, { size: 25, class: 'img-rounded' }
+    - else
+      %span.glyphicon.glyphicon-user
     %em= game.user.try :common_name
   .col-xs-6
     .score__updated.pull-right
