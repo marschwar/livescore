@@ -44,7 +44,7 @@ gem 'cancan'
 # gem 'capistrano-rails', group: :development
 
 # Use debugger
-gem 'debugger', group: [:development, :test]
+#gem 'debugger', group: [:development, :test]
 
 # see https://devcenter.heroku.com/articles/rails4
 gem 'rails_12factor', group: :production
