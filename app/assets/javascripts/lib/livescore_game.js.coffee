@@ -1,18 +1,20 @@
 class window.LivescoreGame
   constructor: (@element, options = {}) ->
     @interval = options.interval || 60
+    @max_interval = options.max_interval || 600
     @setupPolling()
 
-  setupPolling: ->
+  setupPolling: (interval = @interval) ->
     self = @
+    @current_interval = interval + Math.round(20 * Math.random()) 
     self.poller = setInterval( ->
       $.ajax self.getUrl(),
         type: 'GET'
         dataType: 'json'
         success: (data, textStatus, jqXHR) ->
           self.update_ui data
-          self.cancelTimer data
-    , @interval * 1000)
+          self.resetTimer data
+    , @current_interval * 1000)
 
   getUrl: ->
     @element.data('url')
@@ -22,9 +24,13 @@ class window.LivescoreGame
     @update_fields data
     @update_possession_marker data
 
-  cancelTimer: (data) ->
-    if data.final
-      clearInterval(@poller)
+  resetTimer: (data) ->
+    clearInterval(@poller)
+    if data.started
+      @setupPolling(@interval)
+    else if !data.final
+      @setupPolling(Math.min(@max_interval, @current_interval * 2))
+
 
   update_started_marker: (data) ->
     if data.started
