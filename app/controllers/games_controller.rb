@@ -12,6 +12,12 @@ class GamesController < ApplicationController
     @games = Game.relevant.order(updated_at: :desc )
   end
 
+  def index_team
+    @team = Team.find(params[:id])
+    @games = Game.with_team(@team).order(game_day: :desc )
+    render :index
+  end
+
   # GET /games/1
   # GET /games/1.json
   def show

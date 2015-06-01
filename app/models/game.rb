@@ -12,6 +12,7 @@ class Game < ActiveRecord::Base
   validates :home_team, :away_team, presence: true
 
   scope :relevant, -> { where("game_day > '#{6.days.ago}'") }
+  scope :with_team, -> (team) { where("home_team_id = ? or away_team_id = ?", team, team) }
 
   def supported_by(user)
     Supporter.exists? user_id: user, game_id: self
