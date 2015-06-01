@@ -4,12 +4,13 @@ class TeamsController < ApplicationController
   IMG_MAX_SIZE = 50000
   IMG_CONTENT_TYPES = %w(image/png image/jpg image/jpeg)
 
-  before_action :set_team, only: [:show, :edit, :update, :destroy]
+  before_action :set_and_authorize_team, only: [:show, :edit, :update, :destroy]
   before_action :encode_image_in_params, only: [:create, :update]
 
   # GET /teams
   # GET /teams.json
   def index
+    authorize! :index, Team
     respond_to do |format|
       format.json do
         query = params[:q] || ''
@@ -87,6 +88,11 @@ private
   # Use callbacks to share common setup or constraints between actions.
   def set_team
     @team = Team.find(params[:id])
+  end
+
+  def set_and_authorize_team
+    set_team
+    authorize! action_name.to_sym, @team
   end
 
   # Never trust parameters from the scary internet, only allow the white list through.

@@ -12,6 +12,7 @@ class Ability
 
 private
     def guest
+      can [:show], Team
     end
 
     def user
@@ -22,7 +23,7 @@ private
       can [:edit_score, :update_score, :update, :create_note, :destroy_note], Game do |game|
         game.supported_by @user
       end
-      can [:create, :update], Team
+      can [:create], Team
       can [:create_comment], Game
     end
 
