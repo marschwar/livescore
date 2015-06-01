@@ -2,11 +2,11 @@
   .form-group{class: "#{'has-error' if @game.errors[:home_team].present?}"}
     = f.label :home_team_name, :class => 'control-label'
     .controls
-      %input{id: :home_team_name, name: 'game[home_team_name]', type: :text, value: @game.home_team.try(:name), placeholder: t('.team_name.placeholder.home'), class: 'form-control js-typeahead', data: { url: "#{teams_path}", name: "teams", minlength: 2 }}
+      %input{id: :home_team_name, name: 'game[home_team_name]', type: :text, value: @game.home_team.try(:name), placeholder: t('.team_name.placeholder.home'), autocomplete: :off, class: 'form-control js-typeahead', data: { url: "#{teams_path}", name: "teams", minlength: 2 }}
   .form-group{class: "#{'has-error' if @game.errors[:away_team].present?}"}
     = f.label :away_team_name, :class => 'control-label'
     .controls
-      %input{id: :away_team_name, name: 'game[away_team_name]', type: :text, value: @game.away_team.try(:name), placeholder: t('.team_name.placeholder.away'), class: 'form-control js-typeahead', data: { url: "#{teams_path}", name: "teams", minlength: 2 }}
+      %input{id: :away_team_name, name: 'game[away_team_name]', type: :text, value: @game.away_team.try(:name), placeholder: t('.team_name.placeholder.away'), autocomplete: :off, class: 'form-control js-typeahead', data: { url: "#{teams_path}", name: "teams", minlength: 2 }}
   .form-group
     = f.label :game_day, :class => 'control-label'
     .controls
