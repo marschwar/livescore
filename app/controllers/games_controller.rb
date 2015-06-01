@@ -60,8 +60,10 @@ class GamesController < ApplicationController
   def create
     p = game_params
 
-    p[:home_team_id] = team_id(p.delete(:home_team_name))
-    p[:away_team_id] = team_id(p.delete(:away_team_name))
+    home_team_name = p.delete(:home_team_name)
+    away_team_name = p.delete(:away_team_name)
+    p[:home_team_id] = find_or_create_team(home_team_name).try(:id)
+    p[:away_team_id] = find_or_create_team(away_team_name).try(:id)
     
     @game = Game.new(p)
     @game.user = current_user
@@ -81,8 +83,8 @@ class GamesController < ApplicationController
   def update
     p = game_params
 
-    p[:home_team_id] = team_id(p.delete(:home_team_name)) if p[:home_team_name].present?
-    p[:away_team_id] = team_id(p.delete(:away_team_name)) if p[:away_team_name].present?
+    p[:home_team_id] = find_or_create_team(p.delete(:home_team_name)).try(:id) if p[:home_team_name].present?
+    p[:away_team_id] = find_or_create_team(p.delete(:away_team_name)).try(:id) if p[:away_team_name].present?
 
     respond_to do |format|
       if @game.update(p)
@@ -137,7 +139,7 @@ private
     current_user.blank?
   end
 
-  def team_id(team_name)
-    Team.where(name: team_name).first.try(:id) if team_name    
+  def find_or_create_team(team_name)
+    team = Team.find_or_create_by(name: team_name) if team_name    
   end
 end

@@ -3,7 +3,7 @@ class Team < ActiveRecord::Base
 
   scope :is_like, -> (name) { where("upper(name) like ?", "%#{name.upcase}%")}
 
-  validates :name, presence: true
+  validates :name, presence: true, length: { minimum: 5 }
 
   def abbreviated_name
   	if /(?<team_name>.*)\s(?<suffix>U\d+)\s*$/i =~ name
