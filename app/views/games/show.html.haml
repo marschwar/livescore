@@ -10,7 +10,7 @@
   %h1= title
   %p.text-muted= t('games.info.reload_not_neccessary')
 
-.row.livescore.js-livescore{data: {url: "#{game_path @game}"}, class: "#{'started' if @game.started?}"}
+.row.livescore{data: {url: "#{game_path @game}"}, class: "#{'started' if @game.started?} #{'js-livescore' unless @game.final?}"}
   .col-md-6
     = render partial: 'by_line', locals: { game: @game }
     .scoreboard__game

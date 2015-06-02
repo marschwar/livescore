@@ -2,7 +2,7 @@
   :javascript
     $('.js-livescore').livescore( {type: 'game', interval: 45 } )
 
-.livescore.js-livescore{data: {url: "#{game_path @game}"}, class: "#{'started' if @game.started?}"}
+.livescore{data: {url: "#{game_path @game}"}, class: "#{'started' if @game.started?} #{'js-livescore' unless @game.final?}"}
   .livescore__topbar
     %span.livescore__period{data: {livescore_path: "period"} }= t("activerecord.values.game.period.#{@game.period}")
     %span.livescore__location= truncate @game.location, length: 18
