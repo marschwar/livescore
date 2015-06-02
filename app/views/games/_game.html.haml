@@ -1,7 +1,10 @@
 .row
   .col-xs-12.scoreboard__period{data: {livescore_path: "period"} }= t("activerecord.values.game.period.#{game.period}")
 .row
-  .col-xs-12.scoreboard__location= game.location
+  - if game.final?
+    .col-xs-12.scoreboard__game-day= localize game.game_day
+  - else
+    .col-xs-12.scoreboard__location= game.location
 .row.scoreboard__team_images
   .col-xs-3.scoreboard__team-image.home= entity_image game.home_team
   .livescore__score.started_visible
