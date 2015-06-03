@@ -14,8 +14,8 @@ class GamesController < ApplicationController
 
   def index_team
     @team = Team.find(params[:id])
-    @games = Game.with_team(@team).order(game_day: :desc )
-    render :index
+    @years = Game.with_team(@team).order(game_day: :desc ).group_by {|g| g.game_day.year}
+    render :index_team
   end
 
   # GET /games/1

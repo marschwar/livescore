@@ -1,0 +1,14 @@
+- games.each_slice(2) do |row|
+  .row
+    - row.each do |game|
+      .col-md-6.livescore{data: {url: "#{game_path game}"}, class: "#{'started' if game.started?} #{'js-livescore' unless game.final?}"}
+        = render partial: 'by_line', locals: { game: game }
+        .scoreboard__game
+          =render partial: 'game', locals: { game: game }
+          .row.scoreboard__actions
+            .col-md-12
+              - if can? :update, game
+                = link_to t('games.links.update_score'), edit_score_game_path(game), :class => 'btn btn-xs btn-primary btn-block'
+              = link_to t('games.links.show'), game_path(game), :class => 'btn btn-xs btn-default btn-block'
+              - if can? :create_note, game
+                = link_to t('games.links.create_note'), new_game_note_path(game), :class => 'btn btn-xs btn-default btn-block'

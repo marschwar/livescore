@@ -6,7 +6,9 @@
   - else
     .col-xs-12.scoreboard__location= game.location
 .row.scoreboard__team_images
-  .col-xs-3.scoreboard__team-image.home= entity_image game.home_team
+  .col-xs-3.scoreboard__team-image.home
+    %a{href: games_team_path(game.home_team)}
+      = entity_image game.home_team
   .livescore__score.started_visible
     .col-xs-2.scoreboard__scores.home{data: {livescore_path: "score.home.total"} }= "#{game.total_home}"
     .col-xs-2.scoreboard__scores= "-"
@@ -17,7 +19,9 @@
       - if game.game_time.present?
         %br
         %span.time=game.game_time
-  .col-xs-3.scoreboard__team-image.away= entity_image game.away_team
+  .col-xs-3.scoreboard__team-image.away
+    %a{href: games_team_path(game.away_team)}
+      = entity_image game.away_team
 -# Web
 - [:home, :away].each do |type|
   .row.hidden-xs.scoreboard__team-score{class: type}

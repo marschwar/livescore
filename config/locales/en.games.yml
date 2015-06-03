@@ -13,6 +13,8 @@ en:
         title: Livescore Community
         description: Ever wanted to know what the score during in any of the other games in your league? Share your teams score and promote the site.
         usage: The site is free to use for everyone. It is community driven so please respect each other. Let me know what you think and send a mail to post@codekenner.de
+    index_team:
+      title: "Games by %{team}"
     game_notes:
       title: Gamenotes
       title_no_notes: No notes yet
