@@ -15,7 +15,7 @@
         url = $this.data('url')
         minLength = $this.data('minlength') || 3
         $this.typeahead {
-          items: 4,
+          items: 12,
           minLength: minLength,
           source: (query, process) ->
             $.get url + "?q=" + query, (data) ->
