@@ -1,7 +1,7 @@
 class Team < ActiveRecord::Base
   belongs_to :user
 
-  scope :is_like, -> (name) { where("upper(name) like ?", "%#{name.upcase}%")}
+  scope :is_like, -> (name) { where("upper(name) like ?", "%#{name.mb_chars.upcase}%")}
 
   validates :name, presence: true, length: { minimum: 5 }
 
