@@ -9,6 +9,17 @@
     %p.text-muted=t '.jumbotron.usage'
 - else
   - content_for :title, t('.title')
+- unless @current_user
+  .row
+    .col-sm-12
+      .well.well
+        .media
+          .media-left.pull-left
+            %a{href: '/auth/facebook'}
+              = image_tag 'social/64/facebook.jpg', title: 'Facebook', class: 'img-rounded media-object'
+          .media-body
+            = t('.login_with_facebook')
+            %a{href: '/auth/facebook'}= t '.login_now'
 .page-header
   %h1=t '.title'
   %p.text-muted= t('games.info.reload_not_neccessary')
