@@ -12,5 +12,8 @@
 .page-header
   %h1=t '.title'
   %p.text-muted= t('games.info.reload_not_neccessary')
-
+- if can? :create, Game
+  .row
+    .col-sm-12
+      .well.well-sm= link_to t(".links.new_game"), new_game_path, {class: 'btn btn-big btn-primary'}
 = render partial: 'games', locals: { games: @games }
