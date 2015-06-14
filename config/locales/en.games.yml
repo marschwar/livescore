@@ -13,6 +13,8 @@ en:
         title: Livescore Community
         description: Ever wanted to know what the score during in any of the other games in your league? Share your teams score and promote the site.
         usage: The site is free to use for everyone. It is community driven so please respect each other. Let me know what you think and send a mail to post@codekenner.de
+      links:
+        new_game: Post a Game now
     index_team:
       title: "Games by %{team}"
     game_notes:
@@ -26,3 +28,11 @@ en:
       reload_not_neccessary: There is no need to reload this page. The data is updated automatically.
     widget:
       provided_by: Powered by Livescore
+    form:
+      team_name:
+        placeholder:
+          home: Name of the home team
+          away: Name of the visiting team
+      help:
+        home_team: Enter the name of the home team. After three letters I try to find an existing team. If it is new to me, I will create it for you.
+        away_team: Enter the name of the visiting team here. The same rules as above apply.

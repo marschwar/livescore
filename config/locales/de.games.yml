@@ -13,6 +13,8 @@ de:
         title: Livescore Community
         description: Warst du auch schon mal im Stadion und wolltest wissen, wie es bei einem anderen Spiel in Deiner Liga gerade steht? Aktualisiere den Spielstand deines Spiels und erzähle anderen davon.
         usage: Diese Seite ist für jeden kostenlos. Ihr Inhalt wird nur durch Euch gepflegt. Je mehr Personen sich aktiv beteiligen, desto größer der Mehrwert für alle. Wichtig, respektiert einander! Kommentare? Schick mir eine E-Mail an post@codekenner.de
+      links:
+        new_game: Jetzt Spielstand eintragen
     index_team:
       title: "Spiele der %{team}"
     edit_score:
@@ -33,6 +35,9 @@ de:
         destroy: Entfernen
     form:
       team_name:
-        placeholder: 
+        placeholder:
           home: Name des Heimteams
           away: Name des Gastteams
+      help:
+        home_team: Gib hier den Namen des Heimteams ein. Nach der Eingabe von drei Zeichen suche ich nach bereits bekannten Teams. Wenn es die Mannschaft noch nicht gibt, lege ich sie für neu an.
+        away_team: Der Name des Gast Teams. Auch hier wird in bekannten Teams gesucht und ggf. automatisch neu erstellt.

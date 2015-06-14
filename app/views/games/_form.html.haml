@@ -1,22 +1,22 @@
 = form_for @game, :html => { :class => 'form-horizontal' } do |f|
   .form-group{class: "#{'has-error' if @game.errors[:home_team].present?}"}
-    = f.label :home_team_name, :class => 'control-label'
-    .controls
-      %input{id: :home_team_name, name: 'game[home_team_name]', type: :text, value: @game.home_team.try(:name), placeholder: t('.team_name.placeholder.home'), autocomplete: :off, class: 'form-control js-typeahead', data: { url: "#{teams_path}", name: "teams", minlength: 2 }}
+    = f.label :home_team_name
+    %input{id: :home_team_name, name: 'game[home_team_name]', type: :text, value: @game.home_team.try(:name), placeholder: t('.team_name.placeholder.home'), autocomplete: :off, class: 'form-control js-typeahead', data: { url: "#{teams_path}", name: "teams", minlength: 2 }, 'aria-describedby' => 'hometeam_help'}
+    %span#hometeam_help.help-block.small= t 'games.form.help.home_team'
   .form-group{class: "#{'has-error' if @game.errors[:away_team].present?}"}
-    = f.label :away_team_name, :class => 'control-label'
-    .controls
-      %input{id: :away_team_name, name: 'game[away_team_name]', type: :text, value: @game.away_team.try(:name), placeholder: t('.team_name.placeholder.away'), autocomplete: :off, class: 'form-control js-typeahead', data: { url: "#{teams_path}", name: "teams", minlength: 2 }}
+    = f.label :away_team_name
+    %input{id: :away_team_name, name: 'game[away_team_name]', type: :text, value: @game.away_team.try(:name), placeholder: t('.team_name.placeholder.away'), autocomplete: :off, class: 'form-control js-typeahead', data: { url: "#{teams_path}", name: "teams", minlength: 2 }, 'aria-describedby' => 'awayteam_help'}
+    %span#awayteam_help.help-block.small= t 'games.form.help.away_team'
   .form-group
-    = f.label :game_day, :class => 'control-label'
+    = f.label :game_day
     .controls
       = f.date_field :game_day, :class => 'form-control', placeholder: "#{localize Date.today}"
   .form-group
-    = f.label :game_time, :class => 'control-label'
+    = f.label :game_time
     .controls
       = f.text_field :game_time, :class => 'form-control', placeholder: "15:00", maxlength: 255
   .form-group
-    = f.label :location, :class => 'control-label'
+    = f.label :location
     .controls
       = f.text_field :location, :class => 'form-control', maxlength: 255
   .form-group.form-actions

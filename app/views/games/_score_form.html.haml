@@ -1,44 +1,40 @@
 = form_for @game, html: { class: 'form-horizontal scoreentry', role: 'form' } do |f|
   .row
     .col-xs-12
-      %label.control-label= t('.possession')
-  .row.scoreentry__possession
-    .controls
-      .col-xs-4
-        %label
-          = f.radio_button :possession, nil
-          = t('activerecord.game.possession.none')
-      .col-xs-4
-        %label
-          = f.radio_button :possession, :home
-          %span.hidden-xs= @game.home_team.name
-          %span.visible-xs-inline= @game.home_team.abbreviated_name
-      .col-xs-4
-        %label
-          = f.radio_button :possession, :away
-          %span.hidden-xs= @game.away_team.name
-          %span.visible-xs-inline= @game.away_team.abbreviated_name
+      %label= t('.possession')
+  .row.form-group.scoreentry__possession
+    .col-xs-4
+      %label
+        = f.radio_button :possession, nil
+        = t('activerecord.game.possession.none')
+    .col-xs-4
+      %label
+        = f.radio_button :possession, :home
+        %span.hidden-xs= @game.home_team.name
+        %span.visible-xs-inline= @game.home_team.abbreviated_name
+    .col-xs-4
+      %label
+        = f.radio_button :possession, :away
+        %span.hidden-xs= @game.away_team.name
+        %span.visible-xs-inline= @game.away_team.abbreviated_name
   .row.scoreentry__team.home
     .col-xs-12
-      %label.control-label= @game.home_team.name
-  .row
-    .controls
-      - (1..4).each do |quarter|
-        .col-xs-3= f.text_field "home_quarter_#{quarter}", class: 'form-control'
+      %label= @game.home_team.name
+  .row.form-group
+    - (1..4).each do |quarter|
+      .col-xs-3= f.text_field "home_quarter_#{quarter}", class: 'form-control'
   .row.scoreentry__team.away
     .col-xs-12
-      %label.control-label= @game.away_team.name
-  .row
-    .controls
-      - (1..4).each do |quarter|
-        .col-xs-3= f.text_field "away_quarter_#{quarter}", class: 'form-control'
+      %label= @game.away_team.name
+  .row.form-group
+    - (1..4).each do |quarter|
+      .col-xs-3= f.text_field "away_quarter_#{quarter}", class: 'form-control'
   .row.scoreentry__period
     .col-xs-12
-      %label.control-label= t('.period')
-  .row
-    .controls
-      .col-xs-12
-        =f.select :period, @period_options, {}, {class: 'form-control'}
+      %label= t('.period')
+  .row.form-group
+    .col-xs-12
+      =f.select :period, @period_options, {}, {class: 'form-control'}
   .row
     .col-xs-12
       .scoreentry__actions.form-actions
