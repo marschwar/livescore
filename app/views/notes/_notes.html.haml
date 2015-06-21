@@ -8,6 +8,6 @@
             %a{href: game_note_path(game, note), data: {method: :delete, confirm: t('.confirm', default: t("helpers.links.confirm", default: 'Sicher?'))}}
               %span.pull-right.glyphicon.glyphicon-trash
           %span= localize note.created_at
-          %em= note.text
+          %em= h note.text
   - else
     .panel-heading= t('.title_no_notes')

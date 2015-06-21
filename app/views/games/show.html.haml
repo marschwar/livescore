@@ -4,10 +4,10 @@
     $('.js-livescore-notes').livescore({ type: 'notes' })
 
 - title = @game.title
-- content_for :title, title
+- content_for :title, h(title)
 
 .page-header
-  %h1= title
+  %h1= h title
   %p.text-muted= t('games.info.reload_not_neccessary')
 
 .row.livescore{data: {url: "#{game_path @game}"}, class: "#{'started' if @game.started?} #{'js-livescore' unless @game.final?}"}
