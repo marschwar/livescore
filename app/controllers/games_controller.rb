@@ -8,7 +8,7 @@ class GamesController < ApplicationController
   # GET /games
   # GET /games.json
   def index
-    team_name = params[:q]
+    team_name = params[:team_name]
     team = Team.is_like(team_name).first if team_name.present?
     if team
       redirect_to games_team_path(team)

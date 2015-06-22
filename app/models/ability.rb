@@ -12,7 +12,7 @@ class Ability
 
 private
     def guest
-      can [:show], Team
+      can [:show, :index], Team
     end
 
     def user
