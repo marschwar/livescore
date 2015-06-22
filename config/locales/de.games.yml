@@ -15,8 +15,12 @@ de:
         usage: Diese Seite ist für jeden kostenlos. Ihr Inhalt wird nur durch Euch gepflegt. Je mehr Personen sich aktiv beteiligen, desto größer der Mehrwert für alle. Wichtig, respektiert einander! Kommentare? Schick mir eine E-Mail an post@codekenner.de
       links:
         new_game: Jetzt Spielstand eintragen
+        find_team: Team finden
       login_with_facebook: Um selbst einen Spielstand teilen zu können oder Kommentare zu hinterlassen, musst du dich mit deinem Facebook Konto anmelden.
       login_now: Jetzt anmelden
+      team_name:
+        headline: Finde dein Lieblingsteam
+        placeholder: Team Name
     index_team:
       title: "Spiele der %{team}"
     edit_score:

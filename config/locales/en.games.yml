@@ -15,8 +15,12 @@ en:
         usage: The site is free to use for everyone. It is community driven so please respect each other. Let me know what you think and send a mail to post@codekenner.de
       links:
         new_game: Post a Game now
+        find_team: Find Team
       login_with_facebook: To post a score and leave a comment, please login with your facebook account.
       login_now: Login now
+      team_name:
+        headline: Find your Team
+        placeholder: Team Name
     index_team:
       title: "Games by %{team}"
     game_notes:

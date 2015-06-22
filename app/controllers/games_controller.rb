@@ -8,6 +8,12 @@ class GamesController < ApplicationController
   # GET /games
   # GET /games.json
   def index
+    team_name = params[:team_name]
+    team = Team.is_like(team_name).first if team_name.present?
+    if team
+      redirect_to games_team_path(team)
+    end
+
     @show_jumbo = anonymous and request.path == '/'
     @games = Game.relevant.order(updated_at: :desc )
   end
@@ -64,7 +70,7 @@ class GamesController < ApplicationController
     away_team_name = p.delete(:away_team_name)
     p[:home_team_id] = find_or_create_team(home_team_name).try(:id)
     p[:away_team_id] = find_or_create_team(away_team_name).try(:id)
-    
+
     @game = Game.new(p)
     @game.user = current_user
     respond_to do |format|
@@ -140,6 +146,6 @@ private
   end
 
   def find_or_create_team(team_name)
-    team = Team.find_or_create_by(name: team_name) if team_name    
+    team = Team.find_or_create_by(name: team_name) if team_name
   end
 end

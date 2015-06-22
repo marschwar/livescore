@@ -44,3 +44,13 @@ form .form-actions {
   float: left;
   display: inline-block;
 }
+
+.spacer-bottom {
+  margin-bottom: 1em;
+  .spacer-small {
+    margin-bottom: 0.5em;
+  }
+  .spacer-xl {
+    margin-bottom: 1.5em;
+  }
+}
