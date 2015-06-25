@@ -12,7 +12,7 @@ RUN apt-get install -qq -y \
     icu-devtools libicu-dev     \
     libmcrypt-dev               \
     libxml2-dev libxslt1-dev    \
-    nodejs  
+    nodejs
 
 ENV APP_HOME /myapp
 RUN mkdir $APP_HOME
