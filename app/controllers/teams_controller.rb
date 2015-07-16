@@ -24,6 +24,8 @@ class TeamsController < ApplicationController
   # GET /teams/1
   # GET /teams/1.json
   def show
+    @years = Game.with_team(@team).order(game_day: :desc ).group_by {|g| g.game_day.year}
+
     respond_to do |format|
       format.png { send_team_image :png }
       format.jpg { send_team_image :jpeg }

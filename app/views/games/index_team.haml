@@ -1,7 +1,0 @@
-- content_for :title, t('.title', team: @team.name)
-.page-header
-  %h1=t '.title', team: @team.name
-
-- @years.each do |year, games|
-  %h2= year
-  = render partial: 'games', locals: { games: games }

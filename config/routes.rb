@@ -2,9 +2,6 @@ Rails.application.routes.draw do
   root 'games#index'
 
   resources :teams do
-    member do
-      get 'games', to: 'games#index_team'
-    end
   end
   resources :games do
     resources :notes, only: [ :index, :new, :create, :destroy ]

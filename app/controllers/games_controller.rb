@@ -11,17 +11,11 @@ class GamesController < ApplicationController
     team_name = params[:team_name]
     team = Team.is_like(team_name).first if team_name.present?
     if team
-      redirect_to games_team_path(team)
+      redirect_to team_path(team)
     end
 
     @show_jumbo = anonymous and request.path == '/'
     @games = Game.relevant.order(updated_at: :desc )
-  end
-
-  def index_team
-    @team = Team.friendly.find(params[:id])
-    @years = Game.with_team(@team).order(game_day: :desc ).group_by {|g| g.game_day.year}
-    render :index_team
   end
 
   # GET /games/1
