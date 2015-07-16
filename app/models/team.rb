@@ -1,5 +1,9 @@
 class Team < ActiveRecord::Base
+  extend FriendlyId
+
   belongs_to :user
+
+  friendly_id :name, use: :slugged
 
   scope :is_like, -> (name) { where("upper(name) like ?", "%#{name.mb_chars.upcase}%")}
 

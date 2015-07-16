@@ -11,9 +11,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140713134046) do
+ActiveRecord::Schema.define(version: 20150716132932) do
 
-  create_table "comments", force: true do |t|
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
+  create_table "comments", force: :cascade do |t|
     t.integer  "game_id",    null: false
     t.integer  "user_id",    null: false
     t.string   "text"
@@ -24,7 +27,20 @@ ActiveRecord::Schema.define(version: 20140713134046) do
   add_index "comments", ["game_id"], name: "index_comments_on_game_id", using: :btree
   add_index "comments", ["user_id"], name: "index_comments_on_user_id", using: :btree
 
-  create_table "games", force: true do |t|
+  create_table "friendly_id_slugs", force: :cascade do |t|
+    t.string   "slug",                      null: false
+    t.integer  "sluggable_id",              null: false
+    t.string   "sluggable_type", limit: 50
+    t.string   "scope"
+    t.datetime "created_at"
+  end
+
+  add_index "friendly_id_slugs", ["slug", "sluggable_type", "scope"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type_and_scope", unique: true, using: :btree
+  add_index "friendly_id_slugs", ["slug", "sluggable_type"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type", using: :btree
+  add_index "friendly_id_slugs", ["sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_id", using: :btree
+  add_index "friendly_id_slugs", ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type", using: :btree
+
+  create_table "games", force: :cascade do |t|
     t.integer  "home_team_id",                                    null: false
     t.integer  "away_team_id",                                    null: false
     t.string   "location"
@@ -45,14 +61,14 @@ ActiveRecord::Schema.define(version: 20140713134046) do
     t.integer  "user_id",                                         null: false
   end
 
-  create_table "notes", force: true do |t|
+  create_table "notes", force: :cascade do |t|
     t.integer  "game_id",    null: false
     t.string   "text"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "supporters", force: true do |t|
+  create_table "supporters", force: :cascade do |t|
     t.integer  "game_id",    null: false
     t.integer  "user_id",    null: false
     t.datetime "created_at"
@@ -62,14 +78,15 @@ ActiveRecord::Schema.define(version: 20140713134046) do
   add_index "supporters", ["game_id"], name: "index_supporters_on_game_id", using: :btree
   add_index "supporters", ["user_id"], name: "index_supporters_on_user_id", using: :btree
 
-  create_table "teams", force: true do |t|
+  create_table "teams", force: :cascade do |t|
     t.string   "name"
     t.text     "encoded_image"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "slug"
   end
 
-  create_table "users", force: true do |t|
+  create_table "users", force: :cascade do |t|
     t.string   "common_name",                    null: false
     t.string   "social_id"
     t.string   "email"
