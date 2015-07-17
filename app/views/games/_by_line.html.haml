@@ -1,6 +1,6 @@
 .row.text-muted
   .col-xs-6
-    = entity_image game.user, { version: :micro, class: 'img-rounded' }
+    = entity_image game.user, { version: :micro, size: 20, class: 'img-rounded' }
     %em= game.user.try :common_name
   .col-xs-6
     .score__updated.pull-right
