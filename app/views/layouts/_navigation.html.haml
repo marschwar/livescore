@@ -1,5 +1,5 @@
-%nav.navbar.navbar-default.navbar-static-top{role: 'navigation'}
-  .container-fluid
+%header.navbar.navbar-default.navbar-static-top{role: 'banner'}
+  .container
     .navbar-header
       %button.navbar-toggle.collapsed{type: "button", data: {toggle: "collapse", target: '#livescore-navbar'}}
         %span.icon-bar
@@ -11,7 +11,7 @@
       %a.navbar-brand(href="/")
         Footballscores
 
-    #livescore-navbar.navbar-collapse.collapse.navbar-responsive-collapse
+    %nav.navbar-collapse.collapse{id: 'livescore-navbar'}
       %ul.nav.navbar-nav
         %li= link_to t("navbar.scoreboard"), games_path
         - if @current_user
