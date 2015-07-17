@@ -1,7 +1,7 @@
 CarrierWave.configure do |config|
   config.storage    = :aws
   config.aws_bucket = ENV.fetch('S3_BUCKET_NAME')
-  config.aws_acl    = 'public-read'
+  config.aws_acl    = :public_read # starting with 1.0 it must be 'public-read' instead
 
   config.cache_dir = "#{Rails.root}/tmp/uploads"
 
@@ -10,8 +10,7 @@ CarrierWave.configure do |config|
 
   # Set custom options such as cache control to leverage browser caching
   config.aws_attributes = {
-    expires: 1.week.from_now.httpdate,
-    cache_control: 'max-age=604800'
+    cache_control: 'public,max-age=86400'
   }
 
   config.aws_credentials = {
