@@ -10,8 +10,7 @@ class AuthService
     info = auth_hash[:info]
     user.common_name = info[:name]
     user.email = info[:email]
-    user.image_url = info[:image].sub('http:','https:') if info[:image].present?
-    #user.remote_avatar_url = info[:image].sub('http:','https:') if info[:image].present?
+    user.remote_avatar_url = info[:image].sub('http:','https:') if info[:image].present?
 
     user.save!
 
