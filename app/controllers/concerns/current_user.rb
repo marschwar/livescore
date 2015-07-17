@@ -25,13 +25,13 @@ private
   end
 
   def remember_me
-    logger.info "remember_me cookie is #{cookies.signed[:remember_me]}"
-    cookies.signed[:remember_me]
+    cookies.delete(:remember_me)
+    cookies.signed[:remember_user]
   end
 
   def remember_me=(value)
     logger.info "Setting remember_me cookie to #{value}"
-    cookies.permanent.signed[:remember_me] = value
+    cookies.signed[:remember_user] = { value: value, expires: 2.months.from_now }
   end
 
   def session_user_id
