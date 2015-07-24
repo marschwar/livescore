@@ -27,6 +27,13 @@
         .col-xs-6= link_to t('games.links.destroy'), game_path(@game), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-danger btn-block'
 
   .col-md-6
+    - if can? :update, @game
+      .panel.panel-default
+        .panel-heading
+          = t('.share.title')
+        .panel-body
+          %p= t '.share.body'
+          %textarea.form-control{rows: 3, readonly: true}= "<iframe src\"#{widget_game_url}\" width=\"100%\" height=\"250\" frameborder=\"0\"></iframe>"
     = render partial: 'notes/game_notes', locals: { game: @game, notes: @notes }
 
 - if can? :create_supporter, @game

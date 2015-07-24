@@ -21,8 +21,12 @@ en:
       team_name:
         headline: Find your Team
         placeholder: Team Name
-    index_team:
-      title: "Games by %{team}"
+    show:
+      share:
+        title: Integrate Livescore
+        body: |
+          You would like to post the live ticker on your teams homepage as well? No problem.
+          Just copy this snippet modify if you like and put it on your website.
     game_notes:
       title: Gamenotes
       title_no_notes: No notes yet

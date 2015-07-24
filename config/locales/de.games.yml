@@ -21,8 +21,12 @@ de:
       team_name:
         headline: Finde dein Lieblingsteam
         placeholder: Team Name
-    index_team:
-      title: "Spiele der %{team}"
+    show:
+      share:
+        title: Livescore einbinden
+        body: |
+          Du möchtest den Ticker auch auf der Homepage Deines Teams einbinden? Kein Problem. Kopiere einfach diesen Schnipsel,
+          passe ihn ggf. noch an und verwende ihn auf Eurer Homepage.
     edit_score:
       title: Spielstand aktualisieren
     score_form:
