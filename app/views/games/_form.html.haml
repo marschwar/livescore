@@ -1,4 +1,4 @@
-= form_for @game, :html => { :class => 'form-horizontal' } do |f|
+= form_for @game do |f|
   .form-group{class: "#{'has-error' if @game.errors[:home_team].present?}"}
     = f.label :home_team_name
     %input{id: :home_team_name, name: 'game[home_team_name]', type: :text, value: @game.home_team.try(:name), placeholder: t('.team_name.placeholder.home'), autocomplete: :off, class: 'form-control js-typeahead', data: { url: "#{teams_path}", name: "teams", minlength: 2 }, 'aria-describedby' => 'hometeam_help'}
