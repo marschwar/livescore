@@ -4,9 +4,9 @@
     .controls
       = f.text_field :name, :class => 'form-control', maxlength: 255
   .form-group
-    = f.label :encoded_image, :class => 'control-label'
-    .controls
-      = f.file_field :encoded_image
-      %p.help-block= t('.image.help')
+    = f.label :logo
+    = image_tag(@team.logo_url(:large)) if @team.logo?
+    = f.file_field :logo
+    = f.hidden_field :logo_cache
   = f.submit nil, :class => 'btn btn-primary'
   = link_to t('.cancel', :default => t("helpers.links.cancel")), teams_path, :class => 'btn btn-default'

@@ -1,11 +1,7 @@
 class TeamsController < ApplicationController
   include EntityImage
 
-  IMG_MAX_SIZE = 50000
-  IMG_CONTENT_TYPES = %w(image/png image/jpg image/jpeg)
-
   before_action :set_and_authorize_team, only: [:show, :edit, :update, :destroy]
-  before_action :encode_image_in_params, only: [:create, :update]
 
   # GET /teams
   # GET /teams.json
@@ -99,19 +95,7 @@ private
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def team_params
-    params.require(:team).permit(:name, :encoded_image)
-  end
-
-  def encode_image_in_params
-    uploaded_io = params[:team].delete :encoded_image
-    if valid_image?(uploaded_io)
-      img = Base64.encode64(uploaded_io.read)
-      params[:team][:encoded_image] = "data:#{uploaded_io.content_type};base64,#{img}"
-    end
-  end
-
-  def valid_image?(uploaded_io)
-    uploaded_io && uploaded_io.size < IMG_MAX_SIZE && IMG_CONTENT_TYPES.include?(uploaded_io.content_type)
+    params.require(:team).permit(:name, :logo)
   end
 
   def send_team_image(type)
