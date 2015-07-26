@@ -4,16 +4,14 @@
 %table.table.table-striped
   %thead
     %tr
-      %th= model_class.human_attribute_name(:id)
-      %th= model_class.human_attribute_name(:encoded_image)
+      %th
       %th= model_class.human_attribute_name(:name)
       %th=t '.actions', :default => t("helpers.actions")
   %tbody
     - @teams.each do |team|
       %tr
-        %td= link_to team.id, team_path(team)
         %td= entity_image team, version: :micro
-        %td= team.name
+        %td= link_to team.name, team_path(team)
         %td
           - if can? :edit, team
             = link_to t('.edit', :default => t("helpers.links.edit")), edit_team_path(team), :class => 'btn btn-default btn-xs'
