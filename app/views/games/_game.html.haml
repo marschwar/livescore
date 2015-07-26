@@ -8,7 +8,7 @@
 .row.scoreboard__team_images
   .col-xs-3.scoreboard__team-image.home
     %a{href: team_path(game.home_team)}
-      = entity_image game.home_team
+      = entity_image game.home_team, version: :main
   .livescore__score.started_visible
     .col-xs-2.scoreboard__scores.home{data: {livescore_path: "score.home.total"} }= "#{game.total_home}"
     .col-xs-2.scoreboard__scores= "-"
@@ -21,7 +21,7 @@
         %span.time= h game.game_time
   .col-xs-3.scoreboard__team-image.away
     %a{href: team_path(game.away_team)}
-      = entity_image game.away_team
+      = entity_image game.away_team, version: :main
 -# Web
 - [:home, :away].each do |type|
   .row.hidden-xs.scoreboard__team-score{class: type}

@@ -1,6 +1,9 @@
 class Team < ActiveRecord::Base
   extend FriendlyId
 
+  mount_uploader :logo, TeamLogoUploader
+  alias_attribute :uploader, :logo
+
   belongs_to :user
 
   friendly_id :name, use: :slugged
