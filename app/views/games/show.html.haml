@@ -6,6 +6,7 @@
 - title = @game.title
 - content_for :title, h(title)
 
+- content_for :fb_image, "#{scoreboard_game_url(@game)}.jpg"
 .page-header
   %h1= h title
   %p.text-muted= t('games.info.reload_not_neccessary')

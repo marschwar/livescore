@@ -1,9 +1,14 @@
 !!! 5
-%html(lang="en")
+%html{lang: 'en', 'xmlns:og' => 'http://ogp.me/ns#' }
   %head
     %meta(charset="utf-8")
     %meta(http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1")
     %meta(name="viewport" content="width=device-width, initial-scale=1.0")
+    - if content_for? :fb_image
+      %meta(property="og:image" content="#{yield(:fb_image)}")
+      - if Rails.env.production?
+        %meta(property="og:image:secure_url" content="#{yield(:fb_image)}")
+
     - titles = ['Footballscores']
     - if content_for?(:title)
       - titles << yield(:title)
