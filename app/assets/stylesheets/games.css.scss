@@ -111,3 +111,11 @@ form.scoreentry {
     }
   }
 }
+
+.scoreboard .hidden-xs {
+  display: block !important;
+}
+
+.scoreboard .visible-xs {
+  display: none !important;
+}

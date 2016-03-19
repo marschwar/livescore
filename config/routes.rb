@@ -1,13 +1,13 @@
 Rails.application.routes.draw do
   root 'games#index'
 
-  resources :teams do
-  end
+  resources :teams
   resources :games do
     resources :notes, only: [ :index, :new, :create, :destroy ]
     resources :supporters, only: [ :new, :create, :destroy ]
     resources :comments, only: [ :new, :create ]
     member do
+      get 'scoreboard'
       get 'edit_score'
       get 'widget'
       get 'widget/notes', to: 'notes#widget'
