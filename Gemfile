@@ -7,7 +7,7 @@ gem 'rails', '4.2.0'
 gem 'pg'
 
 # multi threaded webserver
-gem 'puma'
+gem 'unicorn'
 gem 'lograge'
 
 # Use Uglifier as compressor for JavaScript assets
@@ -30,6 +30,8 @@ gem 'carrierwave'
 gem 'mini_magick'
 gem 'carrierwave-aws'
 
+gem 'imgkit'
+
 # Use SCSS for stylesheets
 gem 'sass-rails'
 gem 'less-rails'
@@ -43,6 +45,10 @@ gem 'cancancan'
 
 group :development do
   gem 'quiet_assets'
+end
+
+group :development, :test do
+  gem 'sqlite3'
 end
 
 group :production do

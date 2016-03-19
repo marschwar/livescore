@@ -1,6 +1,6 @@
 class GamesController < ApplicationController
   before_action :set_and_authorize_game, only: [:edit, :edit_score, :update, :update_score, :destroy]
-  before_action :set_game, only: [:show, :notes, :widget]
+  before_action :set_game, only: [:show, :scoreboard, :notes, :widget]
 
   skip_before_action :force_https, only: :widget
   after_action :allow_iframe, only: :widget
@@ -28,6 +28,16 @@ class GamesController < ApplicationController
     end
     if can? :create_comment, @game
       @comment = Comment.new
+    end
+  end
+
+  def scoreboard
+    respond_to do |format|
+      format.html { render layout: 'plain' }
+      format.jpg {
+        img = generate_scoreboard_image
+        send_data img, type: 'image/jpg', disposition: 'inline'
+      }
     end
   end
 
@@ -141,5 +151,15 @@ private
 
   def find_or_create_team(team_name)
     team = Team.find_or_create_by(name: team_name) if team_name
+  end
+
+  def generate_scoreboard_image
+    html =  render_to_string('scoreboard', layout: 'plain', formats: [:html])
+    IMGKit.new(html, 
+      width: 400, 
+      height: 193, 
+      'crop-x' => 14,
+      'crop-w' => 372
+    ).to_img
   end
 end
