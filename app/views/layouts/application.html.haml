@@ -6,8 +6,6 @@
     %meta(name="viewport" content="width=device-width, initial-scale=1.0")
     - if content_for? :fb_image
       %meta(property="og:image" content="#{yield(:fb_image)}")
-      - if Rails.env.production?
-        %meta(property="og:image:secure_url" content="#{yield(:fb_image)}")
 
     - titles = ['Footballscores']
     - if content_for?(:title)
