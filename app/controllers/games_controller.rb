@@ -155,11 +155,6 @@ private
 
   def generate_scoreboard_image
     html =  render_to_string('scoreboard', layout: 'plain', formats: [:html])
-    IMGKit.new(html, 
-      width: 400, 
-      height: 193, 
-      'crop-x' => 14,
-      'crop-w' => 372
-    ).to_img
+    IMGKit.new(html, width: 400, height: 400).to_img
   end
 end

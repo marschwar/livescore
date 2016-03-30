@@ -5,6 +5,5 @@
     %meta(http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1")
     = stylesheet_link_tag "application", :media => "all"
 
-  %body
-    .container
-      = yield
+  %body.plain
+    = yield

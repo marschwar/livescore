@@ -13,6 +13,7 @@
  *= require 'bootstrap_and_overrides'
  *= require 'games'
  *= require 'notes'
+ *= require 'plain'
  *= require_self
  */
 
