@@ -6,7 +6,9 @@
 - title = @game.title
 - content_for :title, h(title)
 
-- content_for :fb_image, "#{scoreboard_game_url(@game)}.jpg"
+- content_for :meta_extra do
+  %meta(property="og:image" content="#{scoreboard_game_url(@game, timestamp: @game.updated_at.to_i)}.jpg")
+  %meta(property="og:updated_time" content="#{@game.updated_at.to_i}")
 .page-header
   %h1= h title
   %p.text-muted= t('games.info.reload_not_neccessary')

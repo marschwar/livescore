@@ -7,13 +7,13 @@ Rails.application.routes.draw do
     resources :supporters, only: [ :new, :create, :destroy ]
     resources :comments, only: [ :new, :create ]
     member do
-      get 'scoreboard'
       get 'edit_score'
       get 'widget'
       get 'widget/notes', to: 'notes#widget'
       post 'update_score'
     end
   end
+  get '/games/:id/:timestamp/scoreboard', to: 'games#scoreboard', as: 'scoreboard_game'
 
   resources :users, only: [ :index, :show ]
 
