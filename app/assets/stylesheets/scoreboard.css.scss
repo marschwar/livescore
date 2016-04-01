@@ -1,0 +1,85 @@
+$team-height: 90px;
+$image-size: 130px;
+$size: 360px;
+$margin: $size / 15;
+$team-width: 3 * $size / 5;
+.scoreboard {
+  background-color: #428bca;
+  color: white;
+  padding: $margin 0;
+  width: $size;
+  height: $size;
+  font-weight: bold;
+  font-variant: small-caps;
+  .score {
+
+    .team {
+      margin-bottom: $margin;
+      height: $team-height;
+      .logo {
+        background-color: white;
+        display: inline-block;
+        height: $team-height;
+        width: $team-width;
+        float: left;
+        overflow: hidden;
+        img {
+          position: relative;
+          top: ($team-height - $image-size) / 2;
+          left: (3 * $size / 5) - $image-size - $margin;
+        }
+      }
+      .score {
+        display: inline-block;
+        margin-left: $margin;
+        width: $size - $team-width - 2 * $margin;
+        font-size: $team-height * .8;
+        float: left;
+        span {
+          display: block;
+          text-align: center;
+        }
+      }
+    }
+    .period {
+      span {
+        font-size: $team-height * 0.7;
+        margin-left: $margin;
+        text-align: center;
+        display: block;
+      }
+    }
+  }
+  .game-preview {
+    .teams {
+      margin-bottom: $margin;
+      .team {
+        width: $size * 0.45;
+        height: $size * 0.4;
+        display: inline-block;
+        background-color: white;
+        overflow: hidden;
+        img {
+          position: relative;
+          top: ($size * 0.40 - 2 * $team-height) / 2;
+          left: ($size * 0.45 - 2 * $team-height) / 2;
+        }
+        &.guest {
+          float: right
+        }
+      }    
+    }
+    .info {
+      font-size: 40px;
+      padding: 0 $margin;
+      text-align: center;
+      display: block;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      &.time {
+        font-size: 20px;
+      }
+    }
+  }
+}

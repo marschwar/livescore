@@ -1,4 +1,24 @@
-.row.livescore.scoreboard
-  .col-sm-12
-    .scoreboard__game
-      = render partial: 'game', locals: { game: @game }
+.scoreboard
+  - if @game.started?
+    .score
+      .team.home
+        .logo= entity_image @game.home_team, version: :large, height: 90 + 40
+        .score
+          %span= @game.total_home
+      .team.guest
+        .logo= entity_image @game.away_team, version: :large, height: 90 + 40
+        .score
+          %span= @game.total_away
+      .period
+        %span= t("activerecord.values.game.period.#{@game.period}")
+  - else
+    .game-preview
+      .teams
+        .team.home
+          .logo= entity_image @game.home_team, version: :large, height: 90 * 2
+        .team.guest
+          .logo= entity_image @game.away_team, version: :large, height: 90 * 2
+      .info.date= localize @game.game_day
+      - if @game.game_time.present?
+        .info.time= h @game.game_time
+      .info.location= @game.location

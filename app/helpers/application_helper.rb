@@ -1,6 +1,6 @@
 module ApplicationHelper
 
-  # when using carrierwave you ca pass the version as option
+  # when using carrierwave you can pass the version as option
   def entity_image(entity, options = { })
     options = { title: h(entity.name), alt: h(entity.name) }.merge(options)
     has_carrierwave_image?(entity) ? carrierwave_image(entity, options) : image_from_database(entity, options)
