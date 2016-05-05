@@ -6,8 +6,10 @@
         .scoreboard__game
           =render partial: '/games/game', locals: { game: game }
           .row.scoreboard__actions
-            - if can? :update, game
-              .col-xs-6= link_to t('games.links.update_score'), edit_score_game_path(game), :class => 'btn btn-primary btn-block'
+            - if can? :update_score, game
+              .col-xs-6= link_to t('games.links.update_score'), edit_score_game_path(game), :class => 'btn btn-default btn-block'
+            - if can? :update_score, game
+              .col-xs-6= link_to t('games.links.update_quick'), edit_quick_game_path(game), :class => 'btn btn-primary btn-block'
             .col-xs-6= link_to t('games.links.show'), game_path(game), :class => 'btn btn-default btn-block'
             - if can? :create_note, game
               .col-xs-6= link_to t('games.links.create_note'), new_game_note_path(game), :class => 'btn btn-default btn-block'
