@@ -8,6 +8,8 @@ Rails.application.routes.draw do
     resources :comments, only: [ :new, :create ]
     member do
       get 'edit_score'
+      get 'edit_quick'
+      post 'edit_quick', to: 'games#update_quick'
       get 'widget'
       get 'widget/notes', to: 'notes#widget'
       post 'update_score'

@@ -14,5 +14,6 @@
 //= require jquery_ujs
 //= require bootstrap
 //= require games
+//= require jquery.quick_update
 //= require_tree ./lib
 //= require_tree ./vendor

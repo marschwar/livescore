@@ -32,6 +32,8 @@ en:
       title_no_notes: No notes yet
     edit_score:
       title: Update Game Score
+    edit_quick:
+      title: Update Game Score
     score_form:
       period: Current Period
     info:

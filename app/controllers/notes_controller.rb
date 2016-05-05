@@ -41,7 +41,13 @@ class NotesController < ApplicationController
     @note.game = @game
     respond_to do |format|
       if @note.save
-        format.html { redirect_to @game, notice: 'Note was successfully created.' }
+        format.html { 
+          if params[:source] == 'quick'
+            redirect_to edit_quick_game_path(@game), notice: 'Note was successfully created.' 
+          else
+            redirect_to @game, notice: 'Note was successfully created.' 
+          end
+        }
         format.json { render :show, status: :created, location: @game }
       else
         format.html { render :new }

@@ -1,5 +1,5 @@
 class GamesController < ApplicationController
-  before_action :set_and_authorize_game, only: [:edit, :edit_score, :update, :update_score, :destroy]
+  before_action :set_and_authorize_game, only: [:edit, :edit_score, :edit_quick, :update, :update_score, :update_quick, :destroy]
   before_action :set_game, only: [:show, :scoreboard, :notes, :widget]
 
   skip_before_action :force_https, only: :widget
@@ -59,9 +59,33 @@ class GamesController < ApplicationController
 
   # GET /games/1/edit_score
   def edit_score
-    @period_options = []
-    Game::PERIODS.each do |key|
-      @period_options << [ t("activerecord.values.game.period.#{key}"), key ]
+    @period_options = period_options
+  end
+
+  # GET /games/1/edit_score
+  def edit_quick
+    @period_options = period_options
+    @notes = @game.notes.recent 25
+  end
+
+  def update_quick
+    begin
+      name = params[:name]
+      value = params[:value]
+
+      if name == 'period'
+        raise unless Game::PERIODS.include? value
+        @game.period = value
+      elsif 'points' == name
+        team = params[:team]
+        @game.add(team, value)
+      end
+
+      @game.save
+
+      render json: {message: "#{t("activerecord.values.game.period.#{@game.period}")}, #{@game.total_home} : #{@game.total_away}"}
+    rescue Exception => e
+      render json: {message: e.message}, status: 500
     end
   end
 
@@ -156,5 +180,13 @@ private
   def generate_scoreboard_image
     html =  render_to_string('scoreboard', layout: 'plain', formats: [:html])
     IMGKit.new(html, width: 360, height: 360).to_img
+  end
+
+  def period_options
+    [].tap do |result|
+      Game::PERIODS.each do |key|
+        result << [ t("activerecord.values.game.period.#{key}"), key ]
+      end      
+    end
   end
 end

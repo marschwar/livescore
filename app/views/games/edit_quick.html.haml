@@ -1,0 +1,34 @@
+- content_for :js_footer do
+  :javascript
+    $('.js-quick-edit').quickupdate()
+
+.page-header
+  %h1=t '.title'
+.js-quick-edit{data: {url: "#{edit_quick_game_path @game}"}}
+  .row
+    - @period_options.each_with_index do |period, index|
+      - if index > 0
+        .col-xs-4
+          %span.btn.btn-default.btn-block.js-quick-edit-value{data: {name: 'period', value: period[1]}}= period[0]
+  - ['home', 'away'].each do |ha|
+    %h2= @game.send("#{ha}_team").name
+    .row
+      .col-xs-3
+        %span.btn.btn-default.btn-block.js-quick-edit-value{data: {name: "points", team: "#{ha}", value: 6}} TD
+      .col-xs-3
+        %span.btn.btn-default.btn-block.js-quick-edit-value{data: {name: "points", team: "#{ha}", value: 1}} PAT
+      .col-xs-3
+        %span.btn.btn-default.btn-block.js-quick-edit-value{data: {name: "points", team: "#{ha}", value: 3}} FG
+      .col-xs-3
+        %span.btn.btn-default.btn-block.js-quick-edit-value{data: {name: "points", team: "#{ha}", value: 2}} Safety
+
+%hr
+.row
+  .col-xs-12
+    = link_to t('games.links.show'), game_path
+
+%hr
+=render 'notes/form', game: @game, note: Note.new, source: 'quick'
+
+%hr
+= render 'notes/game_notes', game: @game, notes: @notes

@@ -68,4 +68,12 @@ class Game < ActiveRecord::Base
   def possession?(type)
     playing? && possession.try(:to_sym) == type.to_sym
   end
+
+  # adds the amount of points to the home or away team in the current period if playing
+  def add(team, points)
+    raise 'not playing' unless playing?
+    raise unless %w(home away).include? team
+    current_points = send "#{team}_#{period}"
+    send("#{team}_#{period}=", current_points + points.to_i)
+  end
 end

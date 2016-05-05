@@ -21,7 +21,9 @@
 
     .scoreboard__actions.row
       - if can? :update_score, @game
-        .col-xs-6= link_to t('games.links.update_score'), edit_score_game_path(@game), :class => 'btn btn-primary btn-block'
+        .col-xs-6= link_to t('games.links.update_score'), edit_score_game_path(@game), :class => 'btn btn-default btn-block'
+      - if can? :update_score, @game
+        .col-xs-6= link_to t('games.links.update_quick'), edit_quick_game_path(@game), :class => 'btn btn-primary btn-block'
       - if can? :update, @game
         .col-xs-6= link_to t('games.links.update_game'), edit_game_path(@game), :class => 'btn btn-default btn-block'
       - if can? :create_note, @game

@@ -3,6 +3,7 @@ de:
     links:
       update_game: Spiel bearbeiten
       update_score: Spielstand ändern
+      update_quick: Ticker
       destroy: Spiel löschen
       show: Spieldetails
       create_note: Kurzmeldung hinzufügen
@@ -28,6 +29,8 @@ de:
           Du möchtest den Ticker auch auf der Homepage Deines Teams einbinden? Kein Problem. Kopiere einfach diesen Schnipsel,
           passe ihn ggf. noch an und verwende ihn auf Eurer Homepage.
     edit_score:
+      title: Spielstand aktualisieren
+    edit_quick:
       title: Spielstand aktualisieren
     score_form:
       period: Aktuelle Spielzeit

@@ -1,0 +1,9 @@
+de:
+  notes:
+    new:
+      title: New Note
+    index:
+      title: "Game Notes"
+    notes:
+      title: Notes
+      title_no_notes: No Notes yet
