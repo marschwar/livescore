@@ -150,7 +150,7 @@ private
   end
 
   def find_or_create_team(team_name)
-    team = Team.find_or_create_by(name: team_name) if team_name
+    Team.find_or_create_by(name: team_name) if team_name
   end
 
   def generate_scoreboard_image
