@@ -64,7 +64,7 @@ class GamesController < ApplicationController
 
   # GET /games/1/edit_score
   def edit_quick
-    @period_options = period_options
+    @period_options = period_options[1..-1]
     @notes = @game.notes.recent 25
   end
 
