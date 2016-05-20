@@ -7,7 +7,7 @@ gem 'rails', '4.2.0'
 gem 'pg'
 
 # multi threaded webserver
-gem 'unicorn'
+gem 'puma'
 gem 'lograge'
 
 # Use Uglifier as compressor for JavaScript assets
