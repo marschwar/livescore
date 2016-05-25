@@ -1,4 +1,4 @@
-= form_for [game, note], html: { class: 'form-horizontal', role: 'form' } do |f|
+= form_for [game, note], html: { class: 'form-horizontal', role: 'form', autocomplete: :off } do |f|
   = hidden_field_tag :source, local_assigns.fetch(:source, 'default')
 
   .row
@@ -6,7 +6,7 @@
       %label.control-label= Note.human_attribute_name(:text)
   .row
     .controls
-      .col-xs-12= f.text_field :text, class: 'form-control', maxlength: 255
+      .col-xs-12= f.text_field :text, class: 'form-control', maxlength: 255, autocomplete: :off
   .row
     .col-xs-12
       .form-actions
