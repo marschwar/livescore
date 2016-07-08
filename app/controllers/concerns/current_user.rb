@@ -16,8 +16,8 @@ private
       if id
         @current_user = User.find(id)
 
-        # force re-login if user has no image yet
-        @current_user = nil unless session_user_id || @current_user.has_image?
+        # force re-login if user is inactive
+        @current_user = nil unless session_user_id || @current_user.active
       end
     rescue
       logger.info "User_ID #{id} from session or cookie invalid"
@@ -25,7 +25,6 @@ private
   end
 
   def remember_me
-    cookies.delete(:remember_me)
     cookies.signed[:remember_user]
   end
 
