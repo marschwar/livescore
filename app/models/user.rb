@@ -11,5 +11,6 @@ class User < ActiveRecord::Base
   alias_attribute :uploader, :avatar
 
   scope :is_like, -> (name) { where("upper(common_name) like ?", "%#{name.upcase}%")}
+  scope :active, -> { where(active: true) }
 
 end
