@@ -19,3 +19,4 @@
 /config/newrelic.yml
 /public/uploads
 .env
+/.byebug_history

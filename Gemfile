@@ -47,6 +47,7 @@ gem 'newrelic_rpm'
 
 group :development do
   gem 'quiet_assets'
+  gem 'byebug'
 end
 
 group :development, :test do
