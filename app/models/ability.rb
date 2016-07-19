@@ -20,7 +20,7 @@ private
       can :manage, Game do |game|
         game.user_id == @user.id
       end
-      can [:edit_score, :edit_quick, :update_score, :update, :create_note, :destroy_note], Game do |game|
+      can [:edit_score, :edit_quick, :update_score, :update_quick, :update, :create_note, :destroy_note], Game do |game|
         game.supported_by @user
       end
       can [:create], Team
