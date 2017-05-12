@@ -4,7 +4,7 @@ class SupportersController < ApplicationController
   # POST /games/:game_id/notes
   # POST /games/:game_id/notes.json
   def create
-    user = User.where(common_name: supporter_params[:user] ).first
+    user = User.active.where(common_name: supporter_params[:user].strip).first
     if user
       @supporter = Supporter.new.tap do |s|
         s.user = user
