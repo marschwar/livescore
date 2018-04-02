@@ -1,5 +1,5 @@
 CarrierWave.configure do |config|
-  if ENV['LOCAL_STORAGE']
+  if ENV['LOCAL_STORAGE'] == 'true'
     config.storage = :file
     Rails.logger.info 'Using local file system to store images'
   else
