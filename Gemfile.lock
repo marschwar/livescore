@@ -255,7 +255,7 @@ DEPENDENCIES
   newrelic_rpm
   omniauth
   omniauth-facebook
-  pg (~> 0.21)
+  pg (~> 0.20)
   puma
   quiet_assets
   rack-cors

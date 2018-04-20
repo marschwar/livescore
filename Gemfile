@@ -4,7 +4,7 @@ ruby '2.3.3'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 4.2.0'
-gem 'pg', '~> 0.21'
+gem 'pg', '~> 0.20'
 
 # multi threaded webserver
 gem 'puma'
