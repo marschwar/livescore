@@ -1,4 +1,4 @@
-class Game < ActiveRecord::Base
+class Game < ApplicationRecord
 
   PERIODS = %w(unstarted quarter_1 quarter_2 half quarter_3 quarter_4 final)
 
