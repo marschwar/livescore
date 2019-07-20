@@ -19,5 +19,5 @@
 
 /config/newrelic.yml
 /public/uploads
-.env
+.environment
 /.byebug_history
