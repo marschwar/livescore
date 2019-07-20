@@ -52,10 +52,6 @@ group :development do
   gem 'byebug'
 end
 
-group :development, :test do
-  gem 'sqlite3'
-end
-
 group :production do
   # see https://devcenter.heroku.com/articles/rails4
   gem 'rails_12factor'
