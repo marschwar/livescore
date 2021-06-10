@@ -27,4 +27,22 @@ class ApplicationController < ActionController::Base
     response.headers.except! 'X-Frame-Options'
   end
 
+# The following is a hack.
+
+  def impressum
+    render "/static/impressum"
+  end
+
+  def datenschutz
+    render "/static/datenschutz"
+  end
+
+  def datenloeschung
+    render "/static/datenloeschung"
+  end
+
+  def nutzungsbedingungen
+    render "/static/nutzungsbedingungen"
+  end
+
 end
