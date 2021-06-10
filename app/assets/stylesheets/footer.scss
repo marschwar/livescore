@@ -1,0 +1,17 @@
+#footer {
+  background-color: #343a40 !important;
+  color: #fff !important;
+  padding: 20px;
+
+  .links {
+    text-align: left;
+
+    padding: 0;
+    list-style: none;
+
+    a {
+      color: #fff;
+      text-decoration: none;
+    }
+  }
+}

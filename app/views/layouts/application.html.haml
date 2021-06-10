@@ -52,13 +52,7 @@
                   = image_tag 'social/64/facebook.jpg', title: 'Facebook', class: 'img-rounded'
 
 
-      %footer
-        %p &copy; CodeKenner 2014&ndash;2021
-        %p
-          &copy;
-          %a(href="https://tkn-consulting.de" target="_blank")
-            tkn-consulting
-          2021
+    = render partial: 'layouts/footer'
 
     = javascript_include_tag "application"
     - if content_for?(:js_footer)
